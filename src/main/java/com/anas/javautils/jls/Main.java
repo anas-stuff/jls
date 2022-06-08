@@ -1,7 +1,18 @@
 package com.anas.javautils.jls;
 
+import com.anas.javautils.jls.args.ArgumentProcessor;
+import com.anas.javautils.jls.output.ListOfFiles;
+
+import java.io.IOException;
+
 public class Main {
+    public static final String version = "1.0.0";
     public static void main(String[] args) {
-        new MainController(args); // Just it :D
+        ArgumentProcessor.getInstance().process(args);
+        try {
+            new ListOfFiles().printFiles();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

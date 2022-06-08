@@ -11,7 +11,6 @@ public enum CLIOption {
     HUMAN_READABLE("h", "human-readable", false, "Print the human readable format"),
     SIZE("s", "size", false, "Print the size"),
     SORT_BY_SIZE("S", "", false, "Sort by size (largest first)"),
-    TYPE("t", "type", false, "Print the type"),
     RECURSIVE("R", "recursive", false, "List subdirectories recursively"),
     NO_ICONS("nc", "no-icons", false, "Don't show icons"),
     ICON_COLOR("ic", "icon-color", true, "Set the icon color (like #ff0000), default is auto"),
@@ -19,7 +18,8 @@ public enum CLIOption {
     NO_OWNER("no", "no-owner", false, "Don't show owner in long format"),
     NO_COLORS("", "no-colors", false, "Don't use colors"),
     NO_DATE("nd", "no-date", false, "Don't show date in long format"),
-    NO_NAME("nn", "no-name", false, "Don't show name");
+    NO_NAME("nn", "no-name", false, "Don't show name"),
+    SORT_BY_LAST_MODIFIED("L", "", false, "Sort by last modified (latest first)");
     private final Option option;    // Apache Commons CLI Option
 
     CLIOption(String shortName, String longName, boolean hasArgs, String description) {

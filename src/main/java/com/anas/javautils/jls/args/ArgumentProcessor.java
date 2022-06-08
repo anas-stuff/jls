@@ -1,6 +1,6 @@
 package com.anas.javautils.jls.args;
 
-import com.anas.javautils.jls.MainController;
+import com.anas.javautils.jls.Main;
 import org.apache.commons.cli.*;
 
 import java.io.IOException;
@@ -11,10 +11,17 @@ public class ArgumentProcessor {
     private final Options options;
     private CommandLine commandLine;
     private final Logger logger = Logger.getLogger(ArgumentProcessor.class.getName());
+    private static ArgumentProcessor instance;
 
-    public ArgumentProcessor() {
+    private ArgumentProcessor() {
         options = new Options();
         setupOptions();
+    }
+
+    public static ArgumentProcessor getInstance() {
+        if (instance == null)
+            instance = new ArgumentProcessor();
+        return instance;
     }
 
     private void setupOptions() {
@@ -30,7 +37,7 @@ public class ArgumentProcessor {
                 printHelp();
                 System.exit(0);
             } else if (commandLine.hasOption(CLIOption.VERSION.getOption())) {
-                System.out.println(MainController.version);
+                System.out.println(Main.version);
                 System.exit(0);
             }
         } catch (ParseException e) {

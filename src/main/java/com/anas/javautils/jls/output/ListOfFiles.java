@@ -7,24 +7,25 @@ import com.anas.javautils.jls.utils.LongLength;
 import java.io.IOException;
 
 public class ListOfFiles {
-    public void printFiles(ArgumentProcessor argumentProcessor) throws IOException {
-        FileInfo[] files = FilesHelper.getFiles(argumentProcessor.hasOption(CLIOption.ALL),
-                argumentProcessor.getTargetPath());
+    public void printFiles() throws IOException {
+        var argumentProcessor = ArgumentProcessor.getInstance();
+        FileInfo[] files = FilesHelper.getFiles(ArgumentProcessor.getInstance().hasOption(CLIOption.ALL),
+                ArgumentProcessor.getInstance().getTargetPath());
 
         if (argumentProcessor.hasOption(CLIOption.LONG)) {
-            printLongFormat(argumentProcessor, files);
+            printLongFormat(files, argumentProcessor);
         } else {
-            printShortFormat(argumentProcessor, files);
+            printShortFormat(files, argumentProcessor);
         }
     }
 
-    private void printShortFormat(ArgumentProcessor argumentProcessor, FileInfo[] files) {
+    private void printShortFormat(final FileInfo[] files, final ArgumentProcessor argumentProcessor) {
         for (FileInfo file : files) {
-            System.out.println(getShortFormat(argumentProcessor, file));
+            System.out.println(getShortFormat(file, argumentProcessor));
         }
     }
 
-    private void printLongFormat(ArgumentProcessor argumentProcessor, FileInfo[] files) {
+    private void printLongFormat(final FileInfo[] files, final ArgumentProcessor argumentProcessor) {
         LongLength length = new LongLength();
 
         for (FileInfo file : files) {
@@ -47,7 +48,8 @@ public class ListOfFiles {
         }
     }
 
-    private String getLongFormat(FileInfo fileInfo, ArgumentProcessor argumentProcessor, LongLength length) {
+    private String getLongFormat(final FileInfo fileInfo,
+                                 final ArgumentProcessor argumentProcessor, final LongLength length) {
         var withColors = !argumentProcessor.hasOption(CLIOption.NO_COLORS);
         return String.format("%10s\t" + "%" + length.getLongSizeLength() + "s\t" +
                 "%" + (!argumentProcessor.hasOption(CLIOption.NO_OWNER) ? (length.getLongOwnerLength() + "s\t") : "s") +
@@ -60,11 +62,11 @@ public class ListOfFiles {
                 (!argumentProcessor.hasOption(CLIOption.NO_OWNER) ? fileInfo.getOwner(withColors) : ""),
                 (argumentProcessor.hasOption(CLIOption.GROUP) ? fileInfo.getGroup(withColors) : ""),
                 (!argumentProcessor.hasOption(CLIOption.NO_DATE) ? fileInfo.getCreationTime(withColors) : ""),
-                getShortFormat(argumentProcessor, fileInfo));
+                getShortFormat(fileInfo, argumentProcessor));
 
     }
 
-    private String getShortFormat(ArgumentProcessor argumentProcessor, FileInfo fileInfo) {
+    private String getShortFormat(final FileInfo fileInfo, ArgumentProcessor argumentProcessor) {
         var withColors = !argumentProcessor.hasOption(CLIOption.NO_COLORS);
         return String.format((argumentProcessor.hasOption(CLIOption.NO_ICONS) ? "%s" : "%-2s ") + "%s",
                 (argumentProcessor.hasOption(CLIOption.NO_ICONS)? "" : fileInfo.getIcon(withColors)),
