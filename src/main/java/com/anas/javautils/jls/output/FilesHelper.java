@@ -1,11 +1,12 @@
 package com.anas.javautils.jls.output;
 
 import java.io.File;
+import java.io.IOException;
 import java.nio.file.Path;
 import java.util.ArrayList;
 
 public class FilesHelper {
-    public static FileInfo[] getFiles(boolean includeHiddenFiles, Path targetPath) {
+    public static FileInfo[] getFiles(boolean includeHiddenFiles, Path targetPath) throws IOException {
         ArrayList<FileInfo> files = new ArrayList<>();
         if (targetPath.toFile().isDirectory()) {
             for (File file : targetPath.toFile().listFiles()) {

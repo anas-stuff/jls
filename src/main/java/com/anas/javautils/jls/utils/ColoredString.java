@@ -64,4 +64,8 @@ public class ColoredString {
 
         return sb.toString();
     }
+
+    public String getNormalString() {
+        return new String(bytes, StandardCharsets.UTF_8);
+    }
 }
