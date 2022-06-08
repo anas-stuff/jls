@@ -138,4 +138,8 @@ public class FileInfo {
     public PosixFileAttributes getFileAttributes() {
         return fileAttributes;
     }
+
+    public boolean isDirectory() {
+        return Files.isDirectory(filePath);
+    }
 }

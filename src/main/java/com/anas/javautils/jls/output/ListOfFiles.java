@@ -55,10 +55,11 @@ public class ListOfFiles {
     private String getLongFormat(final FileInfo fileInfo,
                                  final ArgumentProcessor argumentProcessor, final LongLength length) {
         var withColors = !argumentProcessor.hasOption(CLIOption.NO_COLORS);
-        String format = "%10s\t" + "%" + -length.getLongSizeLength() + "s\t\t" +
-                "%" + (!argumentProcessor.hasOption(CLIOption.NO_OWNER) ? (length.getLongOwnerLength() + "s\t") : "s") +
-                "%" + (argumentProcessor.hasOption(CLIOption.GROUP) ? (length.getLongGroupLength() + "s\t") : "s") +
-                "%" + (!argumentProcessor.hasOption(CLIOption.NO_DATE) ? (length.getLongDateLength() + "s\t") : "s") +
+        String format = "%10s  " + "%" + -length.getLongSizeLength() + "s" +
+                ((fileInfo.isDirectory()? " " : "")  + " %" + (!argumentProcessor.hasOption(CLIOption.NO_OWNER) ?
+                        (-length.getLongOwnerLength() + "s  ") : "s")) +
+                "%" + (argumentProcessor.hasOption(CLIOption.GROUP) ? (-length.getLongGroupLength() + "s  ") : "s") +
+                "%" + (!argumentProcessor.hasOption(CLIOption.NO_DATE) ? (-length.getLongDateLength() + "s  ") : "s") +
                 "%s";
         return String.format(format,
 
