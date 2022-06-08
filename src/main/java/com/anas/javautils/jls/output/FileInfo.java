@@ -32,7 +32,7 @@ public class FileInfo {
 
         var R = new ColoredString("r", new TextColor.RGB(253, 188, 75));
         var W = new ColoredString("w", new TextColor.RGB(192, 57, 43));
-        var X = new ColoredString("x", new TextColor.RGB(163, 53, 42));
+        var X = new ColoredString("x", new TextColor.RGB(147, 154, 89));
 
         sb.append(permissions.contains("OWNER_READ") ? R : hithon)
                 .append(permissions.contains("OWNER_WRITE") ? W : hithon)
