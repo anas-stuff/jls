@@ -1,52 +1,115 @@
 package com.anas.javautils.jls.output;
 
-import java.io.File;
+import com.anas.javautils.jls.utils.ColoredString;
+import com.googlecode.lanterna.TextColor;
+
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.attribute.PosixFileAttributeView;
+import java.util.ArrayList;
 
 public class FileInfo {
-    private final File file;
+    private final Path filePath;
 
-    public FileInfo(File file) {
-        this.file = file;
+    public FileInfo(Path filePath) {
+        this.filePath = filePath;
     }
 
     public String getPermissions() {
-        return file.isDirectory() ? "d" : (file.isFile() ? "-" : "l") +
-                (file.canRead() ? "r" : "-") +
-                (file.canWrite() ? "w" : "-") +
-                (file.canExecute() ? "x" : "-");
+        var sb = new StringBuilder();
+        sb.append(new ColoredString(Files.isDirectory(filePath) ? "d" : Files.isSymbolicLink(filePath) ? "l" : ".",
+                new TextColor.RGB(61, 174, 233)));
+        var hithon = new ColoredString("-", new TextColor.RGB(45, 49, 50));
+        try {
+            ArrayList<String> permissions = new ArrayList<>();
+            Files.getPosixFilePermissions(filePath).forEach(permission -> {
+                permissions.add(permission.name());
+            });
+
+            var R = new ColoredString("r", new TextColor.RGB(253, 188, 75));
+            var W = new ColoredString("w", new TextColor.RGB(192, 57, 43));
+            var X = new ColoredString("x", new TextColor.RGB(163, 53, 42));
+
+            sb.append(permissions.contains("OWNER_READ") ? R : hithon)
+                    .append(permissions.contains("OWNER_WRITE") ? W : hithon)
+                    .append(permissions.contains("OWNER_EXECUTE") ? X : hithon)
+                    // Group permissions
+                    .append(permissions.contains("GROUP_READ") ? R : hithon)
+                    .append(permissions.contains("GROUP_WRITE") ? W : hithon)
+                    .append(permissions.contains("GROUP_EXECUTE") ? X : hithon)
+                    // Others permissions
+                    .append(permissions.contains("OTHERS_READ") ? R : hithon)
+                    .append(permissions.contains("OTHERS_WRITE") ? W : hithon)
+                    .append(permissions.contains("OTHERS_EXECUTE") ? X : hithon);
+        } catch (IOException e) {
+            sb.append(" ");
+        }
+        return sb.toString();
     }
 
-    public long getSize() {
-        return file.length();
+    public String getSize() {
+        try {
+            if (Files.isDirectory(filePath)) {
+                return "-";
+            }
+            return Files.size(filePath) + "";
+        } catch (IOException e) {
+            return "-";
+        }
     }
 
     public String getName() {
-        return file.getName();
+        return filePath.getFileName().toString();
     }
 
     public String getCreationTime() {
-        return new java.text.SimpleDateFormat("MM dd HH:mm:ss").format(file.lastModified());
+        try {
+            return new ColoredString(
+                    new java.text.SimpleDateFormat("M dd HH:mm")
+                            .format(Files.getLastModifiedTime(filePath).toMillis()),
+                    new TextColor.RGB(29, 153, 243)).toString();
+        } catch (IOException e) {
+            return "";
+        }
     }
 
-    public Icons getIcon() {
-        return switch (file.getName()) {
-            case "build.gradle", "settings.gradle", "gradlew" -> Icons.GRADLE;
-            case "routing.ts", "routing.js", "routing.tsx", "routes.ts",
-                    "routes.tsx", "routes.js", "routing.jsx", "routes.jsx" -> Icons.ROUTING;
-            case "sln.dotsettings" -> Icons.SETTINGS;
-            case "d.ts" -> Icons.TYPESCRIPT_DEF;
-            case "vcxitems.filters", "vcxproj.filters" -> Icons.VISUALSTUDIO;
-            case "js.map", "mjs.map" -> Icons.JAVASCRIPT_MAP;
-            case "css.map" -> Icons.CSS_MAP;
-            case "spec.ts", "e2e-spec.ts", "test.ts", "ts.snap" -> Icons.TEST_TS;
-            case "spec.tsx", "test.tsx", "tsx.snap", "spec.jsx", "test.jsx", "jsx.snap" -> Icons.TEST_JSX;
-            case "spec.js", "e2e-spec.js", "test.js", "js.snap" -> Icons.TEST_JS;
-//            case "tf.json" -> Icons.TERRAFORM;
-            case "blade.php", "inky.php" -> Icons.LARAVEL;
-            case "gitlab-ci.yml" -> Icons.GITLAB;
-            /*case "stories.js", "stories.jsx", "story.js", "story.jsx",
-                    "stories.ts", "stories.tsx", "story.ts", "story.tsx" -> Icons.STORYBOOK;*/
-            case "azure-pipelines.yml", "azure-pipelines.yaml" -> Icons.AZURE_PIPELINES;
-        };
+    public Icon getIcon() {
+        Icon icon = Icon.getCorrectIcon(getName());
+        if (icon == null) {
+            if (Files.isDirectory(filePath)) {
+                icon = Icon.DIR;
+            } else {
+                icon = Icon.FILE;
+            }
+        }
+        return icon;
+    }
+
+    public String getOwner() {
+        try {
+            return new ColoredString(Files.getOwner(filePath).getName(),
+                    new TextColor.RGB(240, 179, 73)).toString();
+        } catch (IOException e) {
+            return "";
+        }
+    }
+
+    public String getGroup() {
+        try {
+            return Files.getFileAttributeView(filePath, PosixFileAttributeView.class).readAttributes().group().toString();
+        } catch (IOException e) {
+            return "";
+        }
+    }
+
+    public String getLongFormat(boolean withOwner, boolean withGroup, boolean withIcon) {
+        return String.format("%10s\t" + (withOwner ? "%s\t" : "%s")  + (withGroup ? getGroup() + "%s\t" : "%s") + "%-6s\t%s\t%s",
+                getPermissions(), (withOwner ? getOwner() : ""), (withGroup ? getGroup() : ""),
+                getSize(), getCreationTime(), getShortFormat(withIcon, false));
+    }
+
+    public String getShortFormat(boolean withIcon, boolean witSize) {
+        return (withIcon ? getIcon().toString() + " " : "") + getName() + (witSize ? " " + getSize() : "");
     }
 }

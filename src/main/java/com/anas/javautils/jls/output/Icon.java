@@ -1,90 +1,119 @@
 package com.anas.javautils.jls.output;
 
 import com.googlecode.lanterna.TextColor;
+import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
 
-public enum Icons {
-    HTML('\uf13b', new TextColor.RGB(228, 79, 57)),   // html
-    MARKDOWN('\uf853', new TextColor.RGB(66, 165, 245)),  // markdown
-    CSS('\uf81b', new TextColor.RGB(66, 165, 245)),  // css
-    CSS_MAP('\ue749', new TextColor.RGB(66, 165, 245)),  // css-map
-    SASS('\ue603', new TextColor.RGB(237, 80, 122)),  // sass
-    LESS('\ue60b', new TextColor.RGB(2, 119, 189)),   // less
-    JSON('\ue60b', new TextColor.RGB(251, 193, 60)),  // json
-    YAML('\ue60b', new TextColor.RGB(244, 68, 62)),   // yaml
-    XML('\uf72d', new TextColor.RGB(64, 153, 69)),   // xml
-    IMAGE('\uf71e', new TextColor.RGB(48, 166, 154)),  // image
-    JAVASCRIPT('\ue74e', new TextColor.RGB(255, 202, 61)),  // javascript
-    JAVASCRIPT_MAP('\ue781', new TextColor.RGB(255, 202, 61)),  // javascript-map
-    TEST_JSX('\uf595', new TextColor.RGB(35, 188, 212)),  // test-jsx
-    TEST_JS('\uf595', new TextColor.RGB(255, 202, 61)),  // test-js
-    REACT('\ue7ba', new TextColor.RGB(35, 188, 212)),  // react
-    REACT_TS('\ue7ba', new TextColor.RGB(36, 142, 211)),  // react_ts
-    SETTINGS('\uf013', new TextColor.RGB(66, 165, 245)),  // settings
-    TYPESCRIPT('\ue628', new TextColor.RGB(3, 136, 209)),   // typescript
-    TYPESCRIPT_DEF('\ufbe4', new TextColor.RGB(3, 136, 209)),   // typescript-def
-    TEST_TS('\uf595', new TextColor.RGB(3, 136, 209)),   // test-ts
-    PDF('\uf724', new TextColor.RGB(244, 68, 62)),   // pdf
-    TABLE('\uf71a', new TextColor.RGB(139, 195, 74)),  // table
-    VISUALSTUDIO('\ue70c', new TextColor.RGB(173, 99, 188)),  // visualstudio
-    DATABASE('\ue706', new TextColor.RGB(255, 202, 61)),  // database
-    MYSQL('\ue704', new TextColor.RGB(1, 94, 134)),    // mysql
-    POSTGRESQL('\ue76e', new TextColor.RGB(49, 99, 140)),   // postgresql
-    SQLITE('\ue7c4', new TextColor.RGB(1, 57, 84)),     // sqlite
-    CSHARP('\uf81a', new TextColor.RGB(2, 119, 189)),   // csharp
-    ZIP('\uf410', new TextColor.RGB(175, 180, 43)),  // zip
-    EXE('\uf2d0', new TextColor.RGB(229, 77, 58)),   // exe
-    JAVA('\uf675', new TextColor.RGB(244, 68, 62)),   // java
-    C('\ufb70', new TextColor.RGB(2, 119, 189)),   // c
-    CPP('\ufb71', new TextColor.RGB(2, 119, 189)),   // cpp
-    GO('\ufcd1', new TextColor.RGB(32, 173, 194)),  // go
-    GO_MOD('\ufcd1', new TextColor.RGB(237, 80, 122)),  // go-mod
-    GO_TEST('\ufcd1', new TextColor.RGB(255, 213, 79)),  // go-test
-    PYTHON('\uf81f', new TextColor.RGB(52, 102, 143)),  // python
-    PYTHON_MISC('\uf820', new TextColor.RGB(130, 61, 28)),   // python-misc
-    URL('\uf836', new TextColor.RGB(66, 165, 245)),  // url
-    CONSOLE('\uf68c', new TextColor.RGB(250, 111, 66)),  // console
-    WORD('\uf72b', new TextColor.RGB(1, 87, 155)),    // word
-    CERTIFICATE('\uf623', new TextColor.RGB(249, 89, 63)),   // certificate
-    KEY('\uf805', new TextColor.RGB(48, 166, 154)),  // key
-    FONT('\uf031', new TextColor.RGB(244, 68, 62)),   // font
-    LIB('\uf831', new TextColor.RGB(139, 195, 74)),  // lib
-    RUBY('\ue739', new TextColor.RGB(229, 61, 58)),   // ruby
-    GEMFILE('\ue21e', new TextColor.RGB(229, 61, 58)),   // gemfile
-    FSHARP('\ue7a7', new TextColor.RGB(55, 139, 186)),  // fsharp
-    SWIFT('\ufbe3', new TextColor.RGB(249, 95, 63)),   // swift
-    DOCKER('\uf308', new TextColor.RGB(1, 135, 201)),   // docker
-    POWERPOINT('\uf726', new TextColor.RGB(209, 71, 51)),   // powerpoint
-    VIDEO('\uf72a', new TextColor.RGB(253, 154, 62)),  // video
-    VIRTUAL('\uf822', new TextColor.RGB(3, 155, 229)),   // virtual
-    EMAIL('\uf6ed', new TextColor.RGB(66, 165, 245)),  // email
-    AUDIO('\ufb75', new TextColor.RGB(239, 83, 80)),   // audio
-    COFFEE('\uf675', new TextColor.RGB(66, 165, 245)),  // coffee
-    DOCUMENT('\uf718', new TextColor.RGB(66, 165, 245)),  // document
-    RUST('\ue7a8', new TextColor.RGB(250, 111, 66)),  // rust
-    RAML('\ue60b', new TextColor.RGB(66, 165, 245)),  // raml
-    XAML('\ufb72', new TextColor.RGB(66, 165, 245)),  // xaml
-    HASKELL('\ue61f', new TextColor.RGB(254, 168, 62)),  // haskell
-    GIT('\ue702', new TextColor.RGB(229, 77, 58)),   // git
-    LUA('\ue620', new TextColor.RGB(66, 165, 245)),  // lua
-    CLOJURE('\ue76a', new TextColor.RGB(100, 221, 23)),  // clojure
-    GROOVY('\uf2a6', new TextColor.RGB(41, 198, 218)),  // groovy
-    R('\ufcd2', new TextColor.RGB(25, 118, 210)),  // r
-    DART('\ue798', new TextColor.RGB(87, 182, 240)),  // dart
-    MXML('\uf72d', new TextColor.RGB(254, 168, 62)),  // mxml
-    ASSEMBLY('\uf471', new TextColor.RGB(250, 109, 63)),  // assembly
-    GRADLE('\uE608', new TextColor.RGB(29, 151, 167)),  // gradle
-    ROUTING('\ufb40', new TextColor.RGB(67, 160, 71)),   // routing
-    LARAVEL('\ue73f', new TextColor.RGB(248, 80, 81)),   // laravel
-    GITLAB('\uf296', new TextColor.RGB(226, 69, 57)),   // gitlab
-    AZURE_PIPELINES('\uf427', new TextColor.RGB(20, 101, 192)),  // azure-pipelines
+import java.nio.charset.StandardCharsets;
+
+public enum Icon {
+
+    // {} : case sensitive
+    // * : any string
+    // | : or
+
+    HTML('\uf13b', new TextColor.RGB(228, 79, 57), "*.htm|*.html"),   // html
+    MARKDOWN('\uf853', new TextColor.RGB(66, 165, 245), "*.md|*.markdown"),  // markdown
+    CSS('\uf81b', new TextColor.RGB(66, 165, 245), "*.css"),  // css
+    CSS_MAP('\ue749', new TextColor.RGB(66, 165, 245), "css.map"),  // css-map
+    SASS('\ue603', new TextColor.RGB(237, 80, 122), "*.sass"),  // sass
+    LESS('\ue60b', new TextColor.RGB(2, 119, 189), "*.less"),   // less
+    JSON('\ue60b', new TextColor.RGB(251, 193, 60), "*.json"),  // json
+    YAML('\ue60b', new TextColor.RGB(244, 68, 62), "*.yaml|*.yml"),   // yaml
+    XML('\uf72d', new TextColor.RGB(64, 153, 69), "*.xml"),   // xml
+    IMAGE('\uf71e', new TextColor.RGB(48, 166, 154), "*.png|*.jpg|*.jpeg|*.gif|*.bmp|*.ico"),   // image
+    JAVASCRIPT('\ue74e', new TextColor.RGB(255, 202, 61), "*.js"),   // javascript
+    JAVASCRIPT_MAP('\ue781', new TextColor.RGB(255, 202, 61), "js.map"),   // javascript-map
+    TEST_JSX('\uf595', new TextColor.RGB(35, 188, 212), "spec.jsx|test.jsx|jsx.snap"),   // test-jsx
+    TEST_JS('\uf595', new TextColor.RGB(255, 202, 61), "spec.js|e2e-spec.js|test.js|js.snap"),   // test-js
+    REACT('\ue7ba', new TextColor.RGB(35, 188, 212), "*.jsx|*.tsx"),   // react
+    //    REACT_TS('\ue7ba', new TextColor.RGB(36, 142, 211), ""),   // react-ts
+    SETTINGS('\uf013', new TextColor.RGB(66, 165, 245), "*.settings|sln.dotsettings"),   // settings
+    TYPESCRIPT('\ue628', new TextColor.RGB(3, 136, 209), "*.ts|*.tsx"),   // typescript
+    TYPESCRIPT_DEF('\ufbe4', new TextColor.RGB(3, 136, 209), "*.d.ts"),   // typescript-def
+    TEST_TS('\uf595', new TextColor.RGB(3, 136, 209), "spec.ts|e2e-spec.ts|test.ts|ts.snap"),   // test-ts
+    PDF('\uf724', new TextColor.RGB(244, 68, 62), "*.pdf"),   // pdf
+    //    TABLE('\uf71a', new TextColor.RGB(139, 195, 74)),  // table
+    VISUALSTUDIO('\ue70c', new TextColor.RGB(173, 99, 188), "*.vs|*.vss|vcxitems.filters|vcxproj.filters"),   // visualstudio
+    DATABASE('\ue706', new TextColor.RGB(255, 202, 61), "*.db"),   // database
+    MYSQL('\ue704', new TextColor.RGB(1, 94, 134), "*.sql"),   // mysql
+    //    POSTGRESQL('\ue76e', new TextColor.RGB(49, 99, 140), "*.sql"),   // postgresql
+    SQLITE('\ue7c4', new TextColor.RGB(1, 57, 84), "*.sqlite"),   // sqlite
+    CSHARP('\uf81a', new TextColor.RGB(2, 119, 189), "*.cs"),   // csharp
+    COMPRESSED_FILE('\uf410', new TextColor.RGB(175, 180, 43), """
+            *.zip|*.rar|*.7z|*.gz|*.bz2|*.xz|*.tar|*.tgz|*.z|*.tar.gz|*.tar.bz2|*.tar.xz"""),   // compressed-file
+    EXE('\uf2d0', new TextColor.RGB(229, 77, 58), "*.exe|*.msi"),   // exe
+    JAVA('\uf675', new TextColor.RGB(244, 68, 62), "*.java|*.class|*.jar"),   // java
+    C('\ufb70', new TextColor.RGB(2, 119, 189), "*.c"),   // c
+    CPP('\ufb71', new TextColor.RGB(2, 119, 189), "*.cpp"),   // cpp
+    GO('\ufcd1', new TextColor.RGB(32, 173, 194), "*.go"),   // go
+    GO_MOD('\ufcd1', new TextColor.RGB(237, 80, 122), "go.mod"),   // go-mod
+    //    GO_TEST('\ufcd1', new TextColor.RGB(255, 213, 79), "*.go"),   // go-test
+    PYTHON('\uf81f', new TextColor.RGB(52, 102, 143), "*.py"),   // python
+    PYTHON_MISC('\uf820', new TextColor.RGB(130, 61, 28), "*.pyc|*.pyo"),   // python-misc
+    URL('\uf836', new TextColor.RGB(66, 165, 245), "*.url"),   // url
+    CONSOLE('\uf68c', new TextColor.RGB(250, 111, 66), "*.bat|*.cmd|*.sh|*.bash|*.zsh|*.ksh|*.csh|*.tcsh|*.fish|.bashrc|.zshrc|.kshrc|.cshrc|.tcshrc|.fishrc"),   // console
+    WORD('\uf72b', new TextColor.RGB(1, 87, 155), "*.doc|*.docx|*.xls|*.xlsx|*.ppt|*.pptx|*.odt|*.ods|*.odp|*.odg|*.odc|*.odf|*.odb|*.rtf|*.text|*.wpd|*.wps"),   // word
+    CERTIFICATE('\uf623', new TextColor.RGB(249, 89, 63), "*.cer|*.crt|*.pem|*.crl|*.crl"),   // certificate
+    KEY('\uf805', new TextColor.RGB(48, 166, 154), "*.key|*.pem"),   // key
+    FONT('\uf031', new TextColor.RGB(244, 68, 62), "*.ttf|*.otf|*.woff|*.woff2|*.eot|*.svg|*.ttc|*.dfont"),   // font
+    LIB('\uf831', new TextColor.RGB(139, 195, 74), "*.lib|*.a|*.so|*.dll|*.dylib"),   // lib
+    RUBY('\ue739', new TextColor.RGB(229, 61, 58), "*.rb|*.ruby|*.gemspec|*.rake|*.rbx|*.rbw|*.rbxl|*.rbw|*.rbxl|*.gemspec.lock|*.gemfile.lock"),   // ruby
+    GEMFILE('\ue21e', new TextColor.RGB(229, 61, 58), "*.gemfile"),   // gemfile
+    FSHARP('\ue7a7', new TextColor.RGB(55, 139, 186), "*.fs|*.fsx"),   // fsharp
+    SWIFT('\ufbe3', new TextColor.RGB(249, 95, 63), "*.swift"),   // swift
+    DOCKER('\uf308', new TextColor.RGB(1, 135, 201), "*.dockerfile"),   // docker
+    POWERPOINT('\uf726', new TextColor.RGB(209, 71, 51), "*.ppt|*.pptx"),   // powerpoint
+    VIDEO('\uf72a', new TextColor.RGB(253, 154, 62), """
+            *.mp4|*.mkv|*.avi|*.flv|*.mov|*.wmv|*.mpg|*.mpeg|*.m4v|*.3gp|*.3g2|*.m2ts|*.mts|*.m2t"""),   // video
+    //    VIRTUAL('\uf822', new TextColor.RGB(3, 155, 229)),   // virtual
+    EMAIL('\uf6ed', new TextColor.RGB(66, 165, 245), "*.email|*.eml"),   // email
+    AUDIO('\ufb75', new TextColor.RGB(239, 83, 80), """
+            *.mp3|*.wav|*.flac|*.aac|*.ogg|*.wma|*.m4a|*.m4b|*.m4p|*.m4r|*.aif|*.aiff|*.caf|*.cda|*.mid|*.midi|*.rmi|
+            *.mka|*.mpa|*.mpc|*.mp+"""),   // audio
+    COFFEE('\uf675', new TextColor.RGB(66, 165, 245), "*.coffee"),   // coffee
+    DOCUMENT('\uf718', new TextColor.RGB(66, 165, 245), ".text|*.txt"),   // document
+    RUST('\ue7a8', new TextColor.RGB(250, 111, 66), """
+            *.rs|*.rsi|*.rlib|*.rmeta|*.rmod|*.rout|*.rpass|*.rpss|*.rpssi|*.rmeta.lock|*.rlib.lock|
+            *.rout.lock|*.rpass.lock|*.rpss.lock|*.rpssi.lock"""),   // rust
+    RAML('\ue60b', new TextColor.RGB(66, 165, 245), "*.raml"),   // raml
+    XAML('\ufb72', new TextColor.RGB(66, 165, 245), "*.xaml"),   // xaml
+    HASKELL('\ue61f', new TextColor.RGB(254, 168, 62), "*.hs|*.lhs"),   // haskell
+    GIT('\ue702', new TextColor.RGB(229, 77, 58), """
+            *.gitignore|*.gitattributes|*.gitmodules|*.gitignore.global|*.gitattributes.global|*.gitmodules.global"""),   // git
+    LUA('\ue620', new TextColor.RGB(66, 165, 245), "*.lua"),   // lua
+    CLOJURE('\ue76a', new TextColor.RGB(100, 221, 23), "*.clj|*.cljs|*.cljc"),   // clojure
+    GROOVY('\uf2a6', new TextColor.RGB(41, 198, 218), "*.groovy"),   // groovy
+    R('\ufcd2', new TextColor.RGB(25, 118, 210), "*.r"),   // r
+    DART('\ue798', new TextColor.RGB(87, 182, 240), "*.dart"),   // dart
+    MXML('\uf72d', new TextColor.RGB(254, 168, 62), "*.mxml"),   // mxml
+    ASSEMBLY('\uf471', new TextColor.RGB(250, 109, 63), "*.asm|*.nasm"),   // assembly
+    GRADLE('\uE608', new TextColor.RGB(29, 151, 167), "*.gradle"),   // gradle
+    ROUTING('\ufb40', new TextColor.RGB(67, 160, 71), """
+            routing.ts|routing.js|routing.tsx|routes.ts|routes.tsx|routes.js|routing.jsx|routes.jsx"""),   // routing
+    LARAVEL('\ue73f', new TextColor.RGB(248, 80, 81), "blade.php|inky.php"),   // laravel
+    GITLAB('\uf296', new TextColor.RGB(226, 69, 57), "*.gitlab-ci.yml"),   // gitlab
+    AZURE_PIPELINES('\uf427', new TextColor.RGB(20, 101, 192), "azure-pipelines.yml|azure-pipelines.yaml"),   // azure pipelines
+    GIT_DIR('\uE5FB', new TextColor.RGB(229, 77, 58), ".git"),   // git dir
+    CONFIG_DIR('\ue5fc', new TextColor.RGB(32, 173, 194), ".config"),   // config dir
+    CONTROLLER_DIR('\ue5fc', new TextColor.RGB(255, 194, 61), "controllers"),   // controller dir
+    GITHUB_DIR('\ue5fd', new TextColor.RGB(84, 110, 122), ".github"),   // github dir
+    NPM_DIR('\ue5fa', new TextColor.RGB(203, 56, 55), ".npm"),   // npm dir
+    INCLUDE_DIR('\uf756', new TextColor.RGB(3, 155, 229), "include"),   // include dir
+    IMPORT_DIR('\uf756', new TextColor.RGB(175, 180, 43), "import"),   // import dir
+    UPLOAD_DIR('\uf758', new TextColor.RGB(250, 111, 66), "upload"),   // upload dir
+    DOWNLOAD_DIR('\uf74c', new TextColor.RGB(76, 175, 80), "{Downloads}"),   // download dir
+    SECURE_DIR('\uf74f', new TextColor.RGB(249, 169, 60), "secure"),   // secure dir
+    IMAGES_DIR('\uf74e', new TextColor.RGB(43, 150, 137), "{Pictures}"),   // images dir
+    ENVIRONMENT_DIR('\uf74e', new TextColor.RGB(102, 187, 106), "environment"),   // environment dir
+    IDEA_DIR('\uE7B5', new TextColor.RGB(224, 177, 77), ".idea"),   // idea dir
 
     // Default icons
-    DIR('\uf74a', new TextColor.RGB(224, 177, 77)),
-    DIR_OPEN('\ufc6e', new TextColor.RGB(224, 177, 77)),
-    HIDDEN_DIR('\uf755', new TextColor.RGB(224, 177, 77)),
-    EXECUTABLE('\uf713', new TextColor.RGB(76, 175, 80)),
-    FILE('\uf723', new TextColor.RGB(65, 129, 190)),
-    HIDDEN_FILE('\ufb12', new TextColor.RGB(65, 129, 190)),
+    DIR('\uf74a', new TextColor.RGB(224, 177, 77), ""),   // dir
+    DIR_OPEN('\ufc6e', new TextColor.RGB(224, 177, 77), ""),   // dir open
+    HIDDEN_DIR('\uf755', new TextColor.RGB(224, 177, 77), ""),   // hidden dir
+    EXECUTABLE('\uf713', new TextColor.RGB(76, 175, 80), ""),   // executable
+    FILE('\uf723', new TextColor.RGB(65, 129, 190), ""),   // file
+    HIDDEN_FILE('\ufb12', new TextColor.RGB(65, 129, 190), ""),   // hidden file
     /*VUE('\ufd42', new TextColor.RGB(65, 184, 131)),  // vue
     ('\ufd42', new TextColor.RGB(58, 121, 110)),  // vue-config
             ('\uf83d', new TextColor.RGB(255, 213, 79)),  // lock
@@ -233,24 +262,15 @@ public enum Icons {
             ('\uf1ce', new TextColor.RGB(255, 213, 79)),  // opam (Not supported by nerdFont)
             ('\uf8da', new TextColor.RGB(3, 136, 209)),   // pascal (Not supported by nerdFont)
             ('\ue77f', new TextColor.RGB(3, 136, 209)),   // nuget (Not supported by nerdFont)
-            ('\ue5fc', new TextColor.RGB(32, 173, 194)),  // dir-config('\ue5fc', new TextColor.RGB(255, 194, 61)),  // dir-controller
-            ('\ue5fb', new TextColor.RGB(250, 111, 66)),  // dir-git
-            ('\ue5fd', new TextColor.RGB(84, 110, 122)),  // dir-github
-            ('\ue5fa', new TextColor.RGB(203, 56, 55)),   // dir-npm
-            ('\uf756', new TextColor.RGB(3, 155, 229)),   // dir-include
-            ('\uf756', new TextColor.RGB(175, 180, 43)),  // dir-import
-            ('\uf758', new TextColor.RGB(250, 111, 66)),  // dir-upload
-            ('\uf74c', new TextColor.RGB(76, 175, 80)),   // dir-download
-            ('\uf74f', new TextColor.RGB(249, 169, 60)),  // dir-secure
-            ('\uf74e', new TextColor.RGB(43, 150, 137)),  // dir-images
-            ('\uf74e', new TextColor.RGB(102, 187, 106)), // dir-environment*/
-    ;
+            */;
     private final char icon;
     private final TextColor.RGB color;
+    private final String pattern;
 
-    Icons(char icon, TextColor.RGB color) {
+    Icon(char icon, TextColor.RGB color, String pattern) {
         this.icon = icon;
         this.color = color;
+        this.pattern = pattern;
     }
 
     public char getIcon() {
@@ -261,8 +281,40 @@ public enum Icons {
         return color;
     }
 
+    public String getPattern() {
+        return pattern;
+    }
+
+    public static Icon getCorrectIcon(String fileName) {
+        for (Icon icon : values()) {
+            if (icon.matches(fileName)) {
+                return icon;
+            }
+        }
+        return null;
+    }
+
+    private boolean matches(String fileName) {
+        for (String pat : pattern.split("\\|")) {
+            boolean caseSensitive = pat.startsWith(("{")) && pat.endsWith(("}"));
+            if (caseSensitive) {
+                pat = pat.substring(1, pat.length() - 1);
+            }
+            if (pat.startsWith("*")) {
+                pat = pat.substring(1);
+                if ((!caseSensitive && fileName.toLowerCase().endsWith(pat)) ||
+                        (caseSensitive && fileName.endsWith(pat))) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
     @Override
     public String toString() {
-        return "\033[" + color.getRed() + ";" + color.getGreen() + ";" + color.getBlue() + "m" + icon + "\033[0m";
+        return "\033[" +
+                new String(color.getForegroundSGRSequence(), StandardCharsets.UTF_8) + "m" +
+                icon + "\033[0m";
     }
 }
