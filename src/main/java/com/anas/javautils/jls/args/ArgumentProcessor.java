@@ -11,6 +11,7 @@ public class ArgumentProcessor {
     private final Options options;
     private CommandLine commandLine;
     private final Logger logger = Logger.getLogger(ArgumentProcessor.class.getName());
+    // Singleton
     private static ArgumentProcessor instance;
 
     private ArgumentProcessor() {
