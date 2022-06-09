@@ -3,6 +3,9 @@ package com.anas.javautils.jls.output;
 import com.anas.javautils.jls.args.ArgumentProcessor;
 import com.anas.javautils.jls.args.CLIOption;
 import com.anas.javautils.jls.utils.LongLength;
+import com.anas.javautils.jls.utils.Table;
+import com.googlecode.lanterna.screen.TerminalScreen;
+import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
 
 import java.io.IOException;
 
@@ -19,9 +22,16 @@ public class ListOfFiles {
         }
     }
 
-    private void printShortFormat(final FileInfo[] files, final ArgumentProcessor argumentProcessor) {
+    // TODO: 6/9/22 Complete this method :')
+    private void printShortFormat(final FileInfo[] files, final ArgumentProcessor argumentProcessor) throws IOException {
+        var terminalWidth = new TerminalScreen(new DefaultTerminalFactory().createTerminal())
+                .getTerminalSize().getColumns();
+        var table = new Table();
+        table.createRows(files, terminalWidth);
         for (FileInfo file : files) {
-            System.out.print(getShortFormat(file, argumentProcessor) + "\t\t");
+            var str = getShortFormat(file, argumentProcessor,argumentProcessor.hasOption(CLIOption.SIZE)) + "\t";
+
+            System.out.print(str);
         }
     }
 
@@ -68,15 +78,19 @@ public class ListOfFiles {
                 (!argumentProcessor.hasOption(CLIOption.NO_OWNER) ? fileInfo.getOwner(withColors) : ""),
                 (argumentProcessor.hasOption(CLIOption.GROUP) ? fileInfo.getGroup(withColors) : ""),
                 (!argumentProcessor.hasOption(CLIOption.NO_DATE) ? fileInfo.getCreationTime(withColors) : ""),
-                getShortFormat(fileInfo, argumentProcessor));
+                getShortFormat(fileInfo, argumentProcessor, false));
 
     }
 
-    private String getShortFormat(final FileInfo fileInfo, ArgumentProcessor argumentProcessor) {
+    private String getShortFormat(final FileInfo fileInfo,
+                                  final ArgumentProcessor argumentProcessor, final boolean withSize) {
         var withColors = !argumentProcessor.hasOption(CLIOption.NO_COLORS);
-        return String.format((argumentProcessor.hasOption(CLIOption.NO_ICONS) ? "%s" : "%-2s ") + "%s",
+        return String.format((argumentProcessor.hasOption(CLIOption.NO_ICONS) ? "%s" : "%-2s ") + "%s"
+                + (fileInfo.isSymlink() ? " -> %s" : "%s") + (withSize ? "  %s" : "%s"),
                 (argumentProcessor.hasOption(CLIOption.NO_ICONS)? "" : fileInfo.getIcon(withColors)),
-                fileInfo.getName(withColors));
+                fileInfo.getName(withColors),
+                fileInfo.isSymlink() ? fileInfo.getSymlinkTarget(withColors) : "",
+                (withSize ? fileInfo.getSize(argumentProcessor.hasOption(CLIOption.HUMAN_READABLE), withColors) : ""));
 
     }
 }

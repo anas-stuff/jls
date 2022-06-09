@@ -6,7 +6,6 @@ import com.googlecode.lanterna.TextColor;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.attribute.AttributeView;
 import java.nio.file.attribute.PosixFileAttributeView;
 import java.nio.file.attribute.PosixFileAttributes;
 import java.util.ArrayList;
@@ -140,6 +139,28 @@ public class FileInfo {
     }
 
     public boolean isDirectory() {
-        return Files.isDirectory(filePath);
+        return fileAttributes.isDirectory();
+    }
+
+    public boolean isSymlink() {
+        return Files.isSymbolicLink(filePath);
+    }
+
+    public String getSymlinkTarget(boolean withColors) {
+        if (isSymlink()) {
+            try {
+                var target = Files.readSymbolicLink(filePath);
+                if (withColors) {
+                    return new ColoredString(target.toFile().getName(),
+                            new TextColor.RGB(240, 179, 73)).toString();
+                } else {
+                    return target.toFile().getName();
+                }
+            } catch (IOException e) {
+                return "";
+            }
+        } else {
+            return "";
+        }
     }
 }
