@@ -18,10 +18,9 @@ public class FilesHelper {
             if (rowFiles != null && rowFiles.length > 0) {
                 rowFiles = sort(rowFiles);
                 for (File file : rowFiles) {
-                    if (file.isHidden() && !includeHiddenFiles) {
-                        continue;
+                    if (!file.isHidden() || includeHiddenFiles) {
+                        files.add(new FileInfo(file.toPath()));
                     }
-                    files.add(new FileInfo(file.toPath()));
                 }
             }
         } else {
@@ -31,13 +30,23 @@ public class FilesHelper {
     }
 
     private static File[] sort(File[] rowFiles) {
+        boolean SORT_BY_SIZE = ArgumentProcessor.getInstance().hasOption(CLIOption.SORT_BY_SIZE);
+        boolean SORT_BY_LAST_MODIFIED = ArgumentProcessor.getInstance().hasOption(CLIOption.SORT_BY_LAST_MODIFIED);
+
         return Arrays.stream(rowFiles).sorted((o1, o2) -> {
-            if (ArgumentProcessor.getInstance().hasOption(CLIOption.SORT_BY_SIZE)) {
-                return Long.compare(o1.length(), o2.length());
-            } else if (ArgumentProcessor.getInstance().hasOption(CLIOption.SORT_BY_LAST_MODIFIED)) {
-                return Long.compare(o1.lastModified(), o2.lastModified());
-            }
+            if (SORT_BY_SIZE) return compareSizes(o1, o2);
+
+            else if (SORT_BY_LAST_MODIFIED) return compareLastModified(o1, o2);
+
             return o1.getName().compareTo(o2.getName());
         }).toArray(File[]::new);
+    }
+
+    private static int compareSizes(File o1, File o2) {
+        return Long.compare(o1.length(), o2.length());
+    }
+
+    private static int compareLastModified(File o1, File o2) {
+        return Long.compare(o1.lastModified(), o2.lastModified());
     }
 }
