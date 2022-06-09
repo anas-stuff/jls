@@ -6,7 +6,7 @@ import com.anas.javautils.jls.output.ListOfFiles;
 import java.io.IOException;
 
 public class Main {
-    public static final String version = "1.0.0";
+    public static final String version = "0.2.1";
     public static void main(String[] args) {
         ArgumentProcessor.getInstance().process(args);
         try {
