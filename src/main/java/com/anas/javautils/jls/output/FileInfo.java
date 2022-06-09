@@ -12,11 +12,15 @@ import java.util.ArrayList;
 
 public class FileInfo {
     private final Path filePath;
-    private final PosixFileAttributes fileAttributes;
+    private PosixFileAttributes fileAttributes;
 
-    public FileInfo(Path filePath) throws IOException {
+    public FileInfo(Path filePath)  {
         this.filePath = filePath;
-        this.fileAttributes = Files.getFileAttributeView(filePath, PosixFileAttributeView.class).readAttributes();
+        try {
+            this.fileAttributes = Files.getFileAttributeView(filePath, PosixFileAttributeView.class).readAttributes();
+        } catch (IOException e) {
+            this.fileAttributes = null;
+        }
     }
 
     public String getPermissions() {
@@ -25,9 +29,11 @@ public class FileInfo {
                 new TextColor.RGB(61, 174, 233)));
         var hithon = new ColoredString("-", new TextColor.RGB(124, 124, 124));
         ArrayList<String> permissions = new ArrayList<>();
-        fileAttributes.permissions().forEach(permission -> {
-            permissions.add(permission.name());
-        });
+        if (fileAttributes != null) {
+            fileAttributes.permissions().forEach(permission -> {
+                permissions.add(permission.name());
+            });
+        }
 
         var R = new ColoredString("r", new TextColor.RGB(253, 188, 75));
         var W = new ColoredString("w", new TextColor.RGB(192, 57, 43));
@@ -50,7 +56,7 @@ public class FileInfo {
     public String getSize(boolean humanReadable, boolean withColor) {
         var str = new ColoredString("-", new TextColor.RGB(124, 124, 124));
         if (!Files.isDirectory(filePath)) {
-            var size = (float) fileAttributes.size();
+            var size = (float) (fileAttributes != null ? fileAttributes.size() : 0);
             var unit = "B";
             if (humanReadable) {
                 size = size / 1024; // Convert to KB
@@ -93,7 +99,8 @@ public class FileInfo {
     public String getCreationTime(boolean withColor) {
         var str = new ColoredString(
                 new java.text.SimpleDateFormat("MMM d HH:mm")
-                        .format(fileAttributes.creationTime().toMillis()),
+                        .format(
+                                 fileAttributes != null ? fileAttributes.creationTime().toMillis() : System.currentTimeMillis()),
                 new TextColor.RGB(29, 153, 243));
         if (withColor) {
             return str.toString();
@@ -105,7 +112,7 @@ public class FileInfo {
     public Icon getIcon(boolean withColor) {
         Icon icon = Icon.getCorrectIcon(getName(false));
         if (icon == null) {
-            if (fileAttributes.isDirectory()) {
+            if (fileAttributes != null && fileAttributes.isDirectory()) {
                 icon = Icon.DIR;
             } else {
                 icon = Icon.FILE;
@@ -125,7 +132,7 @@ public class FileInfo {
     }
 
     public String getGroup(boolean withColor) {
-        var str = new ColoredString(fileAttributes.group().getName(),
+        var str = new ColoredString( fileAttributes != null ? fileAttributes.group().getName() : "------",
                 new TextColor.RGB(240, 179, 73));
         if (withColor) {
             return str.toString();
