@@ -13,14 +13,16 @@
 
 ![jls](./Screenshots/0.2.2_in_alacritty.png "jls")
 ![jls -lh](./Screenshots/0.2.2_in_alacritty_with-lh.png "jls -lh")
+
 ## Features
+
 - Support text color.
 - Support icons for file type (require [nerd-font](https://www.nerdfonts.com)).
 
-
 ## Options table
+
 | Option                     | Value                                           | Description                                                     |
-|----------------------------|-------------------------------------------------|-----------------------------------------------------------------|
+| -------------------------- | ----------------------------------------------- | --------------------------------------------------------------- |
 | `--help`                   | n/a                                             | Show help message                                               |
 | `-v` or `--version`        | n/a                                             | Show version                                                    |
 | `-a` or `--all`            | n/a                                             | Show all files including hidden files                           |
@@ -30,25 +32,29 @@
 | `-s` or `--size`           | n/a                                             | Show file size in normal format                                 |
 | `-S`                       | n/a                                             | Sort by size (largest first)                                    |
 | `-R` or `--revcursive`     | n/a                                             | Show files in sub-directories recursively (not implemented yet) |
- | `-nc` or `--no-icons`      | n/a                                             | Don't show icons                                                |
+| `-nc` or `--no-icons`      | n/a                                             | Don't show icons                                                |
 | `-ic` or `--icons-color`   | Icon color in hex format or Auto for auto color | Use custom icons color (not implemented yet)                    |
- | `-tc` or `--text-color`    | Text color in hex format or Auto for auto color | Use custom text color  (not implemented yet)                    |
+| `-tc` or `--text-color`    | Text color in hex format or Auto for auto color | Use custom text color (not implemented yet)                     |
 | `--no-owner`               | n/a                                             | Don't show owner name in long format                            |
 | `--no-colors`              | n/a                                             | Don't use colors                                                |
 | `-nd` or `--no-date`       | n/a                                             | Don't show last modified date                                   |
 | `-nn` or `--no-name`       | n/a                                             | Don't show file name                                            |
 | `-L`                       | n/a                                             | Sort by last modified date (latest first)                       |
 
-
-
 ## Requirements for development:
+
 - [nerd-font](https://www.nerdfonts.com)
 - Gradle 7.4
 - jdk 17
 - IntelliJ IDEA (not required but recommended)
 
+## TODO
+
+- [ ] Add Tests
+- [ ] Add Formatter
 
 ### Available in
+
 [![GitHub](https://img.shields.io/badge/GitHub-Main%20repo-brightgreen?style=for-the-badge&logo=GitHub)](https://github.com/Anas-Elgarhy/jls)
 [![GitLab](https://img.shields.io/badge/GitLab-Mirror%20repo-brightgreen?style=for-the-badge&logo=GitLab)](https://gitlab.com/java-utils1/jls)
 [![BitBucket](https://img.shields.io/badge/BitBucket-Mirror%20repo-brightgreen?style=for-the-badge&logo=BitBucket)](https://bitbucket.org/anas_elgarhy/jls)
