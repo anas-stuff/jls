@@ -3,9 +3,6 @@ package com.anas.javautils.jls.output;
 import com.anas.javautils.jls.args.ArgumentProcessor;
 import com.anas.javautils.jls.args.CLIOption;
 import com.anas.javautils.jls.utils.LongLength;
-import com.anas.javautils.jls.utils.Table;
-import com.googlecode.lanterna.screen.TerminalScreen;
-import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
 
 import java.io.IOException;
 
@@ -23,15 +20,11 @@ public class ListOfFiles {
     }
 
     // TODO: 6/9/22 Complete this method :')
-    private void printShortFormat(final FileInfo[] files, final ArgumentProcessor argumentProcessor) throws IOException {
-        var terminalWidth = new TerminalScreen(new DefaultTerminalFactory().createTerminal())
-                .getTerminalSize().getColumns();
-        var table = new Table();
-        table.createRows(files, terminalWidth);
+    private void printShortFormat(final FileInfo[] files, final ArgumentProcessor argumentProcessor) {
+        // var terminalWidth = new TerminalScreen(new DefaultTerminalFactory().createTerminal())
+        //       .getTerminalSize().getColumns();
         for (FileInfo file : files) {
-            var str = getShortFormat(file, argumentProcessor,argumentProcessor.hasOption(CLIOption.SIZE)) + "\t";
-
-            System.out.print(str);
+            System.out.println(getShortFormat(file, argumentProcessor,argumentProcessor.hasOption(CLIOption.SIZE)) + "\t");
         }
     }
 
