@@ -15,7 +15,7 @@
 ![jls -lh](./Screenshots/0.2.2_in_alacritty_with-lh.png "jls -lh")
 ## Features
 - Support text color.
-- Support icons for file type (require nerd-font).
+- Support icons for file type (require [nerd-font](https://www.nerdfonts.com)).
 
 
 ## Options table
@@ -42,7 +42,7 @@
 
 
 ## Requirements for development:
-- nerd-font
+- [nerd-font](https://www.nerdfonts.com)
 - Gradle 7.4
 - jdk 17
 - IntelliJ IDEA (not required but recommended)
