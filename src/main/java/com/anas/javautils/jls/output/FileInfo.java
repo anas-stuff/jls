@@ -74,10 +74,10 @@ public class FileInfo {
                     }
                 }
                 str = new ColoredString(String.format("%.2f %s", size, unit),
-                        new TextColor.RGB(150, 153, 91));
+                        new TextColor.RGB(28, 108, 117));
             } else {
                 str = new ColoredString(String.format("%d %s", (int)size, unit),
-                        new TextColor.RGB(150, 153, 91));
+                        new TextColor.RGB(28, 108, 117));
             }
         }
         if (withColor) {
