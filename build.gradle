@@ -24,6 +24,7 @@ jar {
     manifest {
         attributes(
 //                'Class-Path': configurations.compile.collect { it.getName() }.join(' '),
+                'Mainfest-Version': '1.0',
                 'Main-Class': 'com.anas.javautils.jls.Main'
         )
     }
