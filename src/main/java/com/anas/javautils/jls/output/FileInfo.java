@@ -15,7 +15,7 @@ public class FileInfo {
     private final Path filePath;
     private PosixFileAttributes fileAttributes;
 
-    public FileInfo(Path filePath)  {
+    public FileInfo(Path filePath) {
         this.filePath = filePath;
         try {
             this.fileAttributes = Files.getFileAttributeView(filePath, PosixFileAttributeView.class).readAttributes();
@@ -63,9 +63,9 @@ public class FileInfo {
         return sb.toString();
     }
 
-    private String getUnit(float size){
+    private String getUnit(float size) {
         var unit = "B";
-        if (size >= 1024){
+        if (size >= 1024) {
             size = size / 1024; // Convert to KB
             unit = "KB";
 
@@ -109,7 +109,7 @@ public class FileInfo {
         return withColor ? str.toString() : str.getNormalString();
     }
 
-    public String getName(){
+    public String getName() {
         return getName(false);
     }
 
@@ -128,9 +128,9 @@ public class FileInfo {
 
         // TODO: Simplify
         String date = new SimpleDateFormat("MMM d HH:mm")
-                        .format(
-            fileAttributes != null ? fileAttributes.creationTime().toMillis() : System.currentTimeMillis()
-        );
+                .format(
+                        fileAttributes != null ? fileAttributes.creationTime().toMillis() : System.currentTimeMillis()
+                );
 
         var str = new ColoredString(date, color);
 
@@ -149,7 +149,7 @@ public class FileInfo {
         // TODO: dynamically get the colors;
         var color = new TextColor.RGB(240, 179, 73);
         var str = new ColoredString(
-            fileAttributes != null ? fileAttributes.owner().getName() : "----", color
+                fileAttributes != null ? fileAttributes.owner().getName() : "----", color
         );
 
         return withColor ? str.toString() : str.getNormalString();
@@ -159,7 +159,7 @@ public class FileInfo {
         // TODO: dynamically get the colors;
         var color = new TextColor.RGB(240, 179, 73);
         var str = new ColoredString(
-            fileAttributes != null ? fileAttributes.group().getName() : "------", color
+                fileAttributes != null ? fileAttributes.group().getName() : "------", color
         );
 
         return withColor ? str.toString() : str.getNormalString();
@@ -191,7 +191,7 @@ public class FileInfo {
             // TODO: dynamically get the colors;
             var color = new TextColor.RGB(240, 179, 73);
 
-            return withColors ? new ColoredString(target.toFile().getName(), color).toString(): target.toFile().getName();
+            return withColors ? new ColoredString(target.toFile().getName(), color).toString() : target.toFile().getName();
 
         } catch (IOException e) {
             // TODO: Log the error;

@@ -27,12 +27,12 @@ public class ColoredString {
         return foregroundColor;
     }
 
-    public TextColor.RGB getBackgroundColor() {
-        return backgroundColor;
-    }
-
     public void setForegroundColor(TextColor.RGB foregroundColor) {
         this.foregroundColor = foregroundColor;
+    }
+
+    public TextColor.RGB getBackgroundColor() {
+        return backgroundColor;
     }
 
     public void setBackgroundColor(TextColor.RGB backgroundColor) {

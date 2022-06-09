@@ -8,11 +8,11 @@ import java.nio.file.Path;
 import java.util.logging.Logger;
 
 public class ArgumentProcessor {
-    private final Options options;
-    private CommandLine commandLine;
-    private final Logger logger = Logger.getLogger(ArgumentProcessor.class.getName());
     // Singleton
     private static ArgumentProcessor instance;
+    private final Options options;
+    private final Logger logger = Logger.getLogger(ArgumentProcessor.class.getName());
+    private CommandLine commandLine;
 
     private ArgumentProcessor() {
         options = new Options();

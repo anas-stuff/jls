@@ -273,6 +273,15 @@ public enum Icon {
         this.pattern = pattern;
     }
 
+    public static Icon getCorrectIcon(String fileName) {
+        for (Icon icon : values()) {
+            if (icon.matches(fileName)) {
+                return icon;
+            }
+        }
+        return null;
+    }
+
     public char getIcon() {
         return icon;
     }
@@ -283,15 +292,6 @@ public enum Icon {
 
     public String getPattern() {
         return pattern;
-    }
-
-    public static Icon getCorrectIcon(String fileName) {
-        for (Icon icon : values()) {
-            if (icon.matches(fileName)) {
-                return icon;
-            }
-        }
-        return null;
     }
 
     private boolean matches(String fileName) {
