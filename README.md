@@ -11,8 +11,8 @@
 [![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=Anas-Elgarhy_jls&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=Anas-Elgarhy_jls)
 [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=Anas-Elgarhy_jls&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=Anas-Elgarhy_jls)
 
-![jls -lh](./Screenshots/0.2.1_with-lh.png "jls -lh")
-
+![jls](./Screenshots/0.2.2_in_alacritty.png "jls")
+![jls -lh](./Screenshots/0.2.2_in_alacritty_with-lh.png "jls -lh")
 ## Features
 - Support text color.
 - Support icons for file type (require nerd-font).
