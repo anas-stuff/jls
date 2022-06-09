@@ -47,6 +47,13 @@
 - jdk 17
 - IntelliJ IDEA (not required but recommended)
 
+
+### Available in
+[![GitHub](https://img.shields.io/badge/GitHub-Main%20repo-brightgreen?style=for-the-badge&logo=GitHub)](https://github.com/Anas-Elgarhy/jls)
+[![GitLab](https://img.shields.io/badge/GitLab-Mirror%20repo-brightgreen?style=for-the-badge&logo=GitLab)](https://gitlab.com/java-utlis1/jls)
+[![BitBucket](https://img.shields.io/badge/BitBucket-Mirror%20repo-brightgreen?style=for-the-badge&logo=BitBucket)](https://bitbucket.org/anas_elgarhy/jls)
+[![Codeberg](https://img.shields.io/badge/Codeberg-Mirror%20repo-brightgreen?style=for-the-badge&logo=Codeberg)](https://codeberg.org/java-utlis/jls)
+
 [![Quality gate](https://sonarcloud.io/api/project_badges/quality_gate?project=Anas-Elgarhy_jls)](https://sonarcloud.io/summary/new_code?id=Anas-Elgarhy_jls)
 
 [![SonarCloud](https://sonarcloud.io/images/project_badges/sonarcloud-black.svg)](https://sonarcloud.io/summary/new_code?id=Anas-Elgarhy_jls)
