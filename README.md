@@ -1,5 +1,16 @@
 # jls: modern ls using java ☕
 
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=Anas-Elgarhy_jls&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=Anas-Elgarhy_jls)
+[![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=Anas-Elgarhy_jls&metric=ncloc)](https://sonarcloud.io/summary/new_code?id=Anas-Elgarhy_jls)
+[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=Anas-Elgarhy_jls&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=Anas-Elgarhy_jls)
+[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=Anas-Elgarhy_jls&metric=bugs)](https://sonarcloud.io/summary/new_code?id=Anas-Elgarhy_jls)
+[![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=Anas-Elgarhy_jls&metric=sqale_index)](https://sonarcloud.io/summary/new_code?id=Anas-Elgarhy_jls)
+[![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=Anas-Elgarhy_jls&metric=reliability_rating)](https://sonarcloud.io/summary/new_code?id=Anas-Elgarhy_jls)
+[![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=Anas-Elgarhy_jls&metric=duplicated_lines_density)](https://sonarcloud.io/summary/new_code?id=Anas-Elgarhy_jls)
+[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=Anas-Elgarhy_jls&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=Anas-Elgarhy_jls)
+[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=Anas-Elgarhy_jls&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=Anas-Elgarhy_jls)
+[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=Anas-Elgarhy_jls&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=Anas-Elgarhy_jls)
+
 ![jls -lh](./Screenshots/0.2.1_with-lh.png "jls -lh")
 
 ## Features
@@ -35,3 +46,9 @@
 - Gradle 7.4
 - jdk 17
 - IntelliJ IDEA (not required but recommended)
+
+[![Quality gate](https://sonarcloud.io/api/project_badges/quality_gate?project=Anas-Elgarhy_jls)](https://sonarcloud.io/summary/new_code?id=Anas-Elgarhy_jls)
+
+[![SonarCloud](https://sonarcloud.io/images/project_badges/sonarcloud-black.svg)](https://sonarcloud.io/summary/new_code?id=Anas-Elgarhy_jls)
+
+![License: GPL-3.0](https://img.shields.io/badge/License-GPL%203.0-blue.svg)
