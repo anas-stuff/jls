@@ -122,7 +122,7 @@ public class FileInfo {
     }
 
     public String getOwner(boolean withColor) {
-        var str = new ColoredString(fileAttributes.owner().getName(),
+        var str = new ColoredString( fileAttributes != null ? fileAttributes.owner().getName() : "----",
                 new TextColor.RGB(240, 179, 73));
         if (withColor) {
             return str.toString();
@@ -146,7 +146,7 @@ public class FileInfo {
     }
 
     public boolean isDirectory() {
-        return fileAttributes.isDirectory();
+        return fileAttributes != null && fileAttributes.isDirectory();
     }
 
     public boolean isSymlink() {
