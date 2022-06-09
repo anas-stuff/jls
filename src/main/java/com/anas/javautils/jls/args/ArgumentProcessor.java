@@ -58,16 +58,18 @@ public class ArgumentProcessor {
 
     public Path getTargetPath() {
         Path targetPath = null;
-        if (commandLine.getArgs().length > 0) {
-            try {
-                targetPath = Path.of(commandLine.getArgs()[0]).toRealPath();
-            } catch (IOException e) {
-                logger.severe("Error: " + e.getMessage());
-                System.exit(1);
-            }
-        } else {
-            targetPath = Path.of(System.getProperty("user.dir"));
+
+        if (commandLine.getArgs().length == 0) {
+            return Path.of(System.getProperty("user.dir"));
         }
+
+        try {
+            targetPath = Path.of(commandLine.getArgs()[0]).toRealPath();
+        } catch (IOException e) {
+            logger.severe("Error: " + e.getMessage());
+            System.exit(1);
+        }
+
         return targetPath;
     }
 }
