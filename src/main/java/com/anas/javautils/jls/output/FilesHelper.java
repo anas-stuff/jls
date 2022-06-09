@@ -8,24 +8,27 @@ import java.io.IOException;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Comparator;
 
 public class FilesHelper {
     public static FileInfo[] getFiles(boolean includeHiddenFiles, Path targetPath) throws IOException {
         ArrayList<FileInfo> files = new ArrayList<>();
         if (targetPath.toFile().isDirectory()) {
             var rowFiles = targetPath.toFile().listFiles();
+
             if (rowFiles != null && rowFiles.length > 0) {
                 rowFiles = sort(rowFiles);
+
                 for (File file : rowFiles) {
                     if (!file.isHidden() || includeHiddenFiles) {
                         files.add(new FileInfo(file.toPath()));
                     }
                 }
             }
+
         } else {
             files.add(new FileInfo(targetPath));
         }
+
         return files.toArray(new FileInfo[0]);
     }
 
