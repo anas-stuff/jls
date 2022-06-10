@@ -317,4 +317,8 @@ public enum Icon {
                 new String(color.getForegroundSGRSequence(), StandardCharsets.UTF_8) + "m" +
                 icon + "\033[0m";
     }
+
+    public String getNoColoredIcon() {
+        return icon + "";
+    }
 }

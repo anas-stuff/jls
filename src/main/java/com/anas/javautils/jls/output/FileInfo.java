@@ -140,7 +140,7 @@ public class FileInfo {
         return withColor ? str.toString() : str.getNormalString();
     }
 
-    public Icon getIcon(final boolean withColor) {
+    public Icon getIcon() {
         Icon icon = Icon.getCorrectIcon(getName());
 
         if (icon != null) return icon;
