@@ -119,7 +119,8 @@ public class ListOfFiles {
                         (withSize ? "  %s" : "%s");
 
         return String.format(format,
-                IS_NO_ICONS ? "" : fileInfo.getIcon(IS_WITH_NO_COLORS),
+                IS_NO_ICONS ? "" : (IS_WITH_NO_COLORS ?
+                        fileInfo.getIcon().toString() : fileInfo.getIcon().getNoColoredIcon()),
                 fileInfo.getName(IS_WITH_NO_COLORS),
                 fileInfo.isSymlink() ? fileInfo.getSymlinkTarget(IS_WITH_NO_COLORS) : "",
                 withSize ? fileInfo.getSize(IS_HUMAN_READABLE, IS_WITH_NO_COLORS) : ""
