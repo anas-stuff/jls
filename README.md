@@ -22,7 +22,7 @@
 ## Options table
 
 | Option                     | Value                                           | Description                                                     |
-| -------------------------- | ----------------------------------------------- | --------------------------------------------------------------- |
+|----------------------------|-------------------------------------------------|-----------------------------------------------------------------|
 | `--help`                   | n/a                                             | Show help message                                               |
 | `-v` or `--version`        | n/a                                             | Show version                                                    |
 | `-a` or `--all`            | n/a                                             | Show all files including hidden files                           |
@@ -53,6 +53,7 @@
 - [ ] Add Tests
 - [ ] Add Formatter
 - [ ] Add configs system
+- [ ] Crete arch package
 
 ### Available in
 
