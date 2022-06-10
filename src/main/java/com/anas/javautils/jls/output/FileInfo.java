@@ -63,7 +63,7 @@ public class FileInfo {
         return sb.toString();
     }
 
-    private String getUnit(float size) {
+    private Object[] calculateUnitNSize(float size) {
         var unit = "B";
         if (size >= 1024) {
             size = size / 1024; // Convert to KB
@@ -85,7 +85,7 @@ public class FileInfo {
             }
         }
 
-        return unit;
+        return new Object[]{unit, size};
     }
 
     public String getSize(boolean humanReadable, boolean withColor) {
@@ -99,7 +99,10 @@ public class FileInfo {
             var color = new TextColor.RGB(28, 108, 117);
 
             if (humanReadable) {
-                unit = getUnit(size);
+                var calculation = calculateUnitNSize(size);
+                unit = (String) calculation[0];
+                size = (float) calculation[1];
+
                 str = new ColoredString(String.format("%.2f %s", size, unit), color);
             } else {
                 str = new ColoredString(String.format("%d %s", (int) size, unit), color);
