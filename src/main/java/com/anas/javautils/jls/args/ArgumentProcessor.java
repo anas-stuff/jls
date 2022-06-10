@@ -31,7 +31,7 @@ public class ArgumentProcessor {
         }
     }
 
-    public void process(String[] args) {
+    public void process(final String[] args) {
         try {
             commandLine = new DefaultParser(true).parse(options, args);
             if (commandLine.hasOption(CLIOption.HELP.getOption())) {

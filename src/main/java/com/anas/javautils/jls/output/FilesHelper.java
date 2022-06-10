@@ -4,13 +4,12 @@ import com.anas.javautils.jls.args.ArgumentProcessor;
 import com.anas.javautils.jls.args.CLIOption;
 
 import java.io.File;
-import java.io.IOException;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Arrays;
 
 public class FilesHelper {
-    public static FileInfo[] getFiles(boolean includeHiddenFiles, Path targetPath) throws IOException {
+    public static FileInfo[] getFiles(final boolean includeHiddenFiles, final Path targetPath) {
         ArrayList<FileInfo> files = new ArrayList<>();
         if (targetPath.toFile().isDirectory()) {
             var rowFiles = targetPath.toFile().listFiles();
@@ -32,7 +31,7 @@ public class FilesHelper {
         return files.toArray(new FileInfo[0]);
     }
 
-    private static File[] sort(File[] rowFiles) {
+    private static File[] sort(final File[] rowFiles) {
         boolean SORT_BY_SIZE = ArgumentProcessor.getInstance().hasOption(CLIOption.SORT_BY_SIZE);
         boolean SORT_BY_LAST_MODIFIED = ArgumentProcessor.getInstance().hasOption(CLIOption.SORT_BY_LAST_MODIFIED);
 
@@ -45,11 +44,11 @@ public class FilesHelper {
         }).toArray(File[]::new);
     }
 
-    private static int compareSizes(File o1, File o2) {
+    private static int compareSizes(final File o1, final File o2) {
         return Long.compare(o1.length(), o2.length());
     }
 
-    private static int compareLastModified(File o1, File o2) {
+    private static int compareLastModified(final File o1, final File o2) {
         return Long.compare(o1.lastModified(), o2.lastModified());
     }
 }

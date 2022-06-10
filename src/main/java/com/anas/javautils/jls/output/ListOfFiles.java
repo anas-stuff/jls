@@ -23,7 +23,8 @@ public class ListOfFiles {
     }
 
     // TODO: 6/9/22 Complete this method :')
-    private void printShortFormat(final FileInfo[] files, final ArgumentProcessor argumentProcessor) {
+    private void printShortFormat(final FileInfo[] files,
+                                  final ArgumentProcessor argumentProcessor) {
         // var terminalWidth = new TerminalScreen(new DefaultTerminalFactory().createTerminal())
         //       .getTerminalSize().getColumns();
         for (FileInfo file : files) {
@@ -31,7 +32,8 @@ public class ListOfFiles {
         }
     }
 
-    private void printLongFormat(final FileInfo[] files, final ArgumentProcessor argumentProcessor) {
+    private void printLongFormat(final FileInfo[] files,
+                                 final ArgumentProcessor argumentProcessor) {
         LongLength length = new LongLength();
 
         boolean IS_NO_COLORS = ArgumentProcessor.getInstance().hasOption(CLIOption.NO_COLORS);

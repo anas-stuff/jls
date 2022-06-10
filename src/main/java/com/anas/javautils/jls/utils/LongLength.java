@@ -19,7 +19,7 @@ public class LongLength {
         return longFileNameLength;
     }
 
-    public void setLongFileNameLength(byte longFileNameLength) {
+    public void setLongFileNameLength(final byte longFileNameLength) {
         this.longFileNameLength = longFileNameLength;
     }
 
@@ -27,7 +27,7 @@ public class LongLength {
         return longDateLength;
     }
 
-    public void setLongDateLength(byte longDateLength) {
+    public void setLongDateLength(final byte longDateLength) {
         this.longDateLength = longDateLength;
     }
 
@@ -35,7 +35,7 @@ public class LongLength {
         return longSizeLength;
     }
 
-    public void setLongSizeLength(byte longSizeLength) {
+    public void setLongSizeLength(final byte longSizeLength) {
         this.longSizeLength = longSizeLength;
     }
 
@@ -43,7 +43,7 @@ public class LongLength {
         return longOwnerLength;
     }
 
-    public void setLongOwnerLength(byte longOwnerLength) {
+    public void setLongOwnerLength(final byte longOwnerLength) {
         this.longOwnerLength = longOwnerLength;
     }
 

@@ -88,7 +88,8 @@ public class FileInfo {
         return new Object[]{unit, size};
     }
 
-    public String getSize(boolean humanReadable, boolean withColor) {
+    public String getSize(final boolean humanReadable,
+                          final boolean withColor) {
         var strColor = new TextColor.RGB(124, 124, 124);
         var str = new ColoredString("-", strColor);
 
@@ -116,7 +117,7 @@ public class FileInfo {
         return getName(false);
     }
 
-    public String getName(boolean withColor) {
+    public String getName(final boolean withColor) {
         var strName = filePath.getFileName().toString();
 
         // TODO: dynamically get the colors;
@@ -125,7 +126,7 @@ public class FileInfo {
         return withColor ? new ColoredString(strName, color).toString() : strName;
     }
 
-    public String getCreationTime(boolean withColor) {
+    public String getCreationTime(final boolean withColor) {
         // TODO: dynamically get the colors;
         var color = new TextColor.RGB(29, 153, 243);
 
@@ -140,7 +141,7 @@ public class FileInfo {
         return withColor ? str.toString() : str.getNormalString();
     }
 
-    public Icon getIcon(boolean withColor) {
+    public Icon getIcon(final boolean withColor) {
         Icon icon = Icon.getCorrectIcon(getName());
 
         if (icon != null) return icon;
@@ -148,7 +149,7 @@ public class FileInfo {
         return isDirectory() ? Icon.DIR : Icon.FILE;
     }
 
-    public String getOwner(boolean withColor) {
+    public String getOwner(final boolean withColor) {
         // TODO: dynamically get the colors;
         var color = new TextColor.RGB(240, 179, 73);
         var str = new ColoredString(
@@ -158,7 +159,7 @@ public class FileInfo {
         return withColor ? str.toString() : str.getNormalString();
     }
 
-    public String getGroup(boolean withColor) {
+    public String getGroup(final boolean withColor) {
         // TODO: dynamically get the colors;
         var color = new TextColor.RGB(240, 179, 73);
         var str = new ColoredString(
@@ -184,7 +185,7 @@ public class FileInfo {
         return getSymlinkTarget(false);
     }
 
-    public String getSymlinkTarget(boolean withColors) {
+    public String getSymlinkTarget(final boolean withColors) {
 
         if (!isSymlink()) return "";
 

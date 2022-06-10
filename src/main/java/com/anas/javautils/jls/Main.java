@@ -8,7 +8,7 @@ import java.io.IOException;
 public class Main {
     public static final String version = "0.2.2";
 
-    public static void main(String[] args) {
+    public static void main(final String[] args) {
         ArgumentProcessor.getInstance().process(args);
         try {
             new ListOfFiles().printFiles();
