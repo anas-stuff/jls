@@ -52,6 +52,7 @@
 
 - [ ] Add Tests
 - [ ] Add Formatter
+- [ ] Add configs system
 
 ### Available in
 
