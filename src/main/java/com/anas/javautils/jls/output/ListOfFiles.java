@@ -66,7 +66,7 @@ public class ListOfFiles {
                 "%s";
         return String.format(format,
 
-                fileInfo.getPermissions(),
+                fileInfo.getPermissions(withColors),
                 fileInfo.getSize(argumentProcessor.hasOption(CLIOption.HUMAN_READABLE), withColors),
                 (!argumentProcessor.hasOption(CLIOption.NO_OWNER) ? fileInfo.getOwner(withColors) : ""),
                 (argumentProcessor.hasOption(CLIOption.GROUP) ? fileInfo.getGroup(withColors) : ""),

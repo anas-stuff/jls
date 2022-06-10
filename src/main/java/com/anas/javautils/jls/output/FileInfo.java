@@ -23,11 +23,12 @@ public class FileInfo {
         }
     }
 
-    public String getPermissions() {
+    public String getPermissions(final boolean withColors) {
         var sb = new StringBuilder();
-        sb.append(new ColoredString(Files.isDirectory(filePath) ? "d" : Files.isSymbolicLink(filePath) ? "l" : ".",
-                new TextColor.RGB(61, 174, 233)));
-        var hithon = new ColoredString("-", new TextColor.RGB(124, 124, 124));
+        var dirOrSymlink = new ColoredString(Files.isDirectory(filePath) ? "d" : Files.isSymbolicLink(filePath) ? "l" : ".",
+                new TextColor.RGB(61, 174, 233));
+        sb.append(withColors ? dirOrSymlink.toString() : dirOrSymlink.getNormalString());
+        var hithon = withColors ? new ColoredString("-", new TextColor.RGB(124, 124, 124)) : "-";
         ArrayList<String> permissions = new ArrayList<>();
         if (fileAttributes != null) {
             fileAttributes.permissions().forEach(permission -> {
@@ -35,9 +36,9 @@ public class FileInfo {
             });
         }
 
-        var R = new ColoredString("r", new TextColor.RGB(253, 188, 75));
-        var W = new ColoredString("w", new TextColor.RGB(192, 57, 43));
-        var X = new ColoredString("x", new TextColor.RGB(147, 154, 89));
+        var R = withColors ? new ColoredString("r", new TextColor.RGB(253, 188, 75)) : "r";
+        var W = withColors ? new ColoredString("w", new TextColor.RGB(192, 57, 43)) : "w";
+        var X = withColors ? new ColoredString("x", new TextColor.RGB(147, 154, 89)) : "x";
 
         sb.append(permissions.contains("OWNER_READ") ? R : hithon)
                 .append(permissions.contains("OWNER_WRITE") ? W : hithon)
