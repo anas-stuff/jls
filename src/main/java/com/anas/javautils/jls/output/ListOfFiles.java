@@ -94,7 +94,7 @@ public class ListOfFiles {
                 (!IS_NO_DATE ? (-length.getLongDateLength() + "s  ") : "s") + "%s";
 
         return String.format(format,
-                fileInfo.getPermissions(),
+                fileInfo.getPermissions(IS_WITH_NO_COLORS),
                 fileInfo.getSize(IS_HUMAN_READABLE, IS_WITH_NO_COLORS),
                 !IS_NO_OWNER ? fileInfo.getOwner(IS_WITH_NO_COLORS) : "",
                 IS_PRINT_GROUP ? fileInfo.getGroup(IS_WITH_NO_COLORS) : "",

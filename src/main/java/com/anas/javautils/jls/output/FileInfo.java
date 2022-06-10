@@ -24,14 +24,13 @@ public class FileInfo {
         }
     }
 
-    public String getPermissions() {
+    public String getPermissions(final boolean withColors) {
         // TODO: dynamically get the colors;
-        var RColor = new TextColor.RGB(253, 188, 75);
-        var WColor = new TextColor.RGB(192, 57, 43);
-        var XColor = new TextColor.RGB(147, 154, 89);
-        var color = new TextColor.RGB(61, 174, 233);
-        var hithonColor = new TextColor.RGB(124, 124, 124);
-
+        var RColor = withColors ?  new TextColor.RGB(253, 188, 75) : null;
+        var WColor = withColors ? new TextColor.RGB(192, 57, 43) : null;
+        var XColor = withColors ? new TextColor.RGB(147, 154, 89) : null;
+        var color = withColors ? new TextColor.RGB(61, 174, 233) : null;
+        var hithonColor = withColors ? new TextColor.RGB(124, 124, 124) : null;
         var sb = new StringBuilder();
 
         sb.append(new ColoredString(isDirectory() ? "d" : isSymlink() ? "l" : ".", color));
