@@ -8,13 +8,14 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.attribute.PosixFileAttributeView;
 import java.nio.file.attribute.PosixFileAttributes;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 public class FileInfo {
     private final Path filePath;
     private PosixFileAttributes fileAttributes;
 
-    public FileInfo(Path filePath)  {
+    public FileInfo(Path filePath) {
         this.filePath = filePath;
         try {
             this.fileAttributes = Files.getFileAttributeView(filePath, PosixFileAttributeView.class).readAttributes();
@@ -24,11 +25,18 @@ public class FileInfo {
     }
 
     public String getPermissions(final boolean withColors) {
+        // TODO: dynamically get the colors;
+        var RColor = new TextColor.RGB(253, 188, 75);
+        var WColor = new TextColor.RGB(192, 57, 43);
+        var XColor = new TextColor.RGB(147, 154, 89);
+        var color = new TextColor.RGB(61, 174, 233);
+        var hithonColor = new TextColor.RGB(124, 124, 124);
         var sb = new StringBuilder();
-        var dirOrSymlink = new ColoredString(Files.isDirectory(filePath) ? "d" : Files.isSymbolicLink(filePath) ? "l" : ".",
-                new TextColor.RGB(61, 174, 233));
-        sb.append(withColors ? dirOrSymlink.toString() : dirOrSymlink.getNormalString());
-        var hithon = withColors ? new ColoredString("-", new TextColor.RGB(124, 124, 124)) : "-";
+
+        sb.append(new ColoredString(isDirectory() ? "d" : isSymlink() ? "l" : ".", color));
+
+        var hithon = new ColoredString("-", hithonColor);
+
         ArrayList<String> permissions = new ArrayList<>();
         if (fileAttributes != null) {
             fileAttributes.permissions().forEach(permission -> {
@@ -36,9 +44,9 @@ public class FileInfo {
             });
         }
 
-        var R = withColors ? new ColoredString("r", new TextColor.RGB(253, 188, 75)) : "r";
-        var W = withColors ? new ColoredString("w", new TextColor.RGB(192, 57, 43)) : "w";
-        var X = withColors ? new ColoredString("x", new TextColor.RGB(147, 154, 89)) : "x";
+        var R = withColors ? new ColoredString("r", RColor) : "r";
+        var W = withColors ? new ColoredString("w", WColor) : "w";
+        var X = withColors ? new ColoredString("x", XColor) : "x";
 
         sb.append(permissions.contains("OWNER_READ") ? R : hithon)
                 .append(permissions.contains("OWNER_WRITE") ? W : hithon)
@@ -54,92 +62,110 @@ public class FileInfo {
         return sb.toString();
     }
 
-    public String getSize(boolean humanReadable, boolean withColor) {
-        var str = new ColoredString("-", new TextColor.RGB(124, 124, 124));
+    private Object[] calculateUnitNSize(float size) {
+        var unit = "B";
+        if (size >= 1024) {
+            size = size / 1024; // Convert to KB
+            unit = "KB";
+
+            if (size >= 1024) {
+                size = size / 1024; // Convert to MB
+                unit = "MB";
+
+                if (size >= 1024) {
+                    size = size / 1024; // Convert to GB
+                    unit = "GB";
+
+                    if (size >= 1024) {
+                        size = size / 1024; // Convert to TB
+                        unit = "TB";
+                    }
+                }
+            }
+        }
+
+        return new Object[]{unit, size};
+    }
+
+    public String getSize(final boolean humanReadable,
+                          final boolean withColor) {
+        var strColor = new TextColor.RGB(124, 124, 124);
+        var str = new ColoredString("-", strColor);
+
         if (!Files.isDirectory(filePath)) {
             var size = (float) (fileAttributes != null ? fileAttributes.size() : 0);
             var unit = "B";
+
+            var color = new TextColor.RGB(28, 108, 117);
+
             if (humanReadable) {
-                size = size / 1024; // Convert to KB
-                unit = "KB";
-                if (size > 1024) {
-                    size = size / 1024; // Convert to MB
-                    unit = "MB";
-                    if (size > 1024) {
-                        size = size / 1024; // Convert to GB
-                        unit = "GB";
-                        if (size > 1024) {
-                            size = size / 1024; // Convert to TB
-                            unit = "TB";
-                        }
-                    }
-                }
-                str = new ColoredString(String.format("%.2f %s", size, unit),
-                        new TextColor.RGB(28, 108, 117));
+                var calculation = calculateUnitNSize(size);
+                unit = (String) calculation[0];
+                size = (float) calculation[1];
+
+                str = new ColoredString(String.format("%.2f %s", size, unit), color);
             } else {
-                str = new ColoredString(String.format("%d %s", (int)size, unit),
-                        new TextColor.RGB(28, 108, 117));
+                str = new ColoredString(String.format("%d %s", (int) size, unit), color);
             }
         }
-        if (withColor) {
-            return str.toString();
-        } else {
-            return str.getNormalString();
-        }
+
+        return withColor ? str.toString() : str.getNormalString();
     }
 
-    public String getName(boolean withColor) {
+    public String getName() {
+        return getName(false);
+    }
+
+    public String getName(final boolean withColor) {
         var strName = filePath.getFileName().toString();
-        if (withColor) {
-            return new ColoredString(strName, new TextColor.RGB(150, 153, 91)).toString();
-        } else {
-            return strName;
-        }
+
+        // TODO: dynamically get the colors;
+        var color = new TextColor.RGB(150, 153, 91);
+
+        return withColor ? new ColoredString(strName, color).toString() : strName;
     }
 
-    public String getCreationTime(boolean withColor) {
+    public String getCreationTime(final boolean withColor) {
+        // TODO: dynamically get the colors;
+        var color = new TextColor.RGB(29, 153, 243);
+
+        // TODO: Simplify
+        String date = new SimpleDateFormat("MMM d HH:mm")
+                .format(
+                        fileAttributes != null ? fileAttributes.creationTime().toMillis() : System.currentTimeMillis()
+                );
+
+        var str = new ColoredString(date, color);
+
+        return withColor ? str.toString() : str.getNormalString();
+    }
+
+    public Icon getIcon(final boolean withColor) {
+        Icon icon = Icon.getCorrectIcon(getName());
+
+        if (icon != null) return icon;
+
+        return isDirectory() ? Icon.DIR : Icon.FILE;
+    }
+
+    public String getOwner(final boolean withColor) {
+        // TODO: dynamically get the colors;
+        var color = new TextColor.RGB(240, 179, 73);
         var str = new ColoredString(
-                new java.text.SimpleDateFormat("MMM d HH:mm")
-                        .format(
-                                 fileAttributes != null ? fileAttributes.creationTime().toMillis() : System.currentTimeMillis()),
-                new TextColor.RGB(29, 153, 243));
-        if (withColor) {
-            return str.toString();
-        } else {
-            return str.getNormalString();
-        }
+                fileAttributes != null ? fileAttributes.owner().getName() : "----", color
+        );
+
+        return withColor ? str.toString() : str.getNormalString();
     }
 
-    public Icon getIcon(boolean withColor) {
-        Icon icon = Icon.getCorrectIcon(getName(false));
-        if (icon == null) {
-            if (fileAttributes != null && fileAttributes.isDirectory()) {
-                icon = Icon.DIR;
-            } else {
-                icon = Icon.FILE;
-            }
-        }
-        return icon;
-    }
+    public String getGroup(final boolean withColor) {
+        // TODO: dynamically get the colors;
+        var color = new TextColor.RGB(240, 179, 73);
+        var str = new ColoredString(
+                fileAttributes != null ? fileAttributes.group().getName() : "------", color
+        );
 
-    public String getOwner(boolean withColor) {
-        var str = new ColoredString( fileAttributes != null ? fileAttributes.owner().getName() : "----",
-                new TextColor.RGB(240, 179, 73));
-        if (withColor) {
-            return str.toString();
-        } else {
-            return str.getNormalString();
-        }
-    }
-
-    public String getGroup(boolean withColor) {
-        var str = new ColoredString( fileAttributes != null ? fileAttributes.group().getName() : "------",
-                new TextColor.RGB(240, 179, 73));
-        if (withColor) {
-            return str.toString();
-        } else {
-            return str.getNormalString();
-        }
+        return withColor ? str.toString() : str.getNormalString();
     }
 
     public PosixFileAttributes getFileAttributes() {
@@ -154,20 +180,24 @@ public class FileInfo {
         return Files.isSymbolicLink(filePath);
     }
 
-    public String getSymlinkTarget(boolean withColors) {
-        if (isSymlink()) {
-            try {
-                var target = Files.readSymbolicLink(filePath);
-                if (withColors) {
-                    return new ColoredString(target.toFile().getName(),
-                            new TextColor.RGB(240, 179, 73)).toString();
-                } else {
-                    return target.toFile().getName();
-                }
-            } catch (IOException e) {
-                return "";
-            }
-        } else {
+    public String getSymlinkTarget() {
+        return getSymlinkTarget(false);
+    }
+
+    public String getSymlinkTarget(final boolean withColors) {
+
+        if (!isSymlink()) return "";
+
+        try {
+            var target = Files.readSymbolicLink(filePath);
+
+            // TODO: dynamically get the colors;
+            var color = new TextColor.RGB(240, 179, 73);
+
+            return withColors ? new ColoredString(target.toFile().getName(), color).toString() : target.toFile().getName();
+
+        } catch (IOException e) {
+            // TODO: Log the error;
             return "";
         }
     }

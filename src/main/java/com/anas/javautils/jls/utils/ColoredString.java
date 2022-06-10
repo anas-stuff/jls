@@ -5,21 +5,24 @@ import com.googlecode.lanterna.TextColor;
 import java.nio.charset.StandardCharsets;
 
 public class ColoredString {
-    private byte[] bytes;
-    private TextColor.RGB foregroundColor;
-    private TextColor.RGB backgroundColor;
+    private final byte[] bytes;
+    private final TextColor.RGB foregroundColor;
+    private final TextColor.RGB backgroundColor;
 
-    public ColoredString(String str, TextColor.RGB foregroundColor, TextColor.RGB backgroundColor) {
+    public ColoredString(final String str,
+                         final TextColor.RGB foregroundColor,
+                         final TextColor.RGB backgroundColor) {
         this.bytes = str.getBytes();
         this.foregroundColor = foregroundColor;
         this.backgroundColor = backgroundColor;
     }
 
-    public ColoredString(String str, TextColor.RGB foregroundColor) {
+    public ColoredString(final String str,
+                         final TextColor.RGB foregroundColor) {
         this(str, foregroundColor, null);
     }
 
-    public ColoredString(String str) {
+    public ColoredString(final String str) {
         this(str, null, null);
     }
 
@@ -27,17 +30,11 @@ public class ColoredString {
         return foregroundColor;
     }
 
+
     public TextColor.RGB getBackgroundColor() {
         return backgroundColor;
     }
 
-    public void setForegroundColor(TextColor.RGB foregroundColor) {
-        this.foregroundColor = foregroundColor;
-    }
-
-    public void setBackgroundColor(TextColor.RGB backgroundColor) {
-        this.backgroundColor = backgroundColor;
-    }
 
     @Override
     public String toString() {

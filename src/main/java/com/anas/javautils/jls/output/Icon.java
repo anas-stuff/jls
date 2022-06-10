@@ -267,10 +267,19 @@ public enum Icon {
     private final TextColor.RGB color;
     private final String pattern;
 
-    Icon(char icon, TextColor.RGB color, String pattern) {
+    Icon(final char icon, final TextColor.RGB color, final String pattern) {
         this.icon = icon;
         this.color = color;
         this.pattern = pattern;
+    }
+
+    public static Icon getCorrectIcon(final String fileName) {
+        for (Icon icon : values()) {
+            if (icon.matches(fileName)) {
+                return icon;
+            }
+        }
+        return null;
     }
 
     public char getIcon() {
@@ -285,16 +294,7 @@ public enum Icon {
         return pattern;
     }
 
-    public static Icon getCorrectIcon(String fileName) {
-        for (Icon icon : values()) {
-            if (icon.matches(fileName)) {
-                return icon;
-            }
-        }
-        return null;
-    }
-
-    private boolean matches(String fileName) {
+    private boolean matches(final String fileName) {
         for (String pat : pattern.split("\\|")) {
             boolean caseSensitive = pat.startsWith(("{")) && pat.endsWith(("}"));
             if (caseSensitive) {

@@ -22,7 +22,10 @@ public enum CLIOption {
     SORT_BY_LAST_MODIFIED("L", "", false, "Sort by last modified (latest first)");
     private final Option option;    // Apache Commons CLI Option
 
-    CLIOption(String shortName, String longName, boolean hasArgs, String description) {
+    CLIOption(final String shortName,
+              final String longName,
+              final boolean hasArgs,
+              final String description) {
         option = new Option(shortName, longName, hasArgs, description);
     }
 
