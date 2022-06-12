@@ -8,7 +8,7 @@ import java.io.IOException;
 
 public class ListOfFiles {
     public void printFiles() throws IOException {
-        var argumentProcessor = ArgumentProcessor.getInstance();
+        final var argumentProcessor = ArgumentProcessor.getInstance();
 
         FileInfo[] files = FilesHelper.getFiles(
                 argumentProcessor.hasOption(CLIOption.ALL),
@@ -28,16 +28,17 @@ public class ListOfFiles {
         // var terminalWidth = new TerminalScreen(new DefaultTerminalFactory().createTerminal())
         //       .getTerminalSize().getColumns();
         for (FileInfo file : files) {
-            System.out.println(getShortFormat(file, argumentProcessor, argumentProcessor.hasOption(CLIOption.SIZE)) + "\t");
+            System.out.println(getShortFormat(file, argumentProcessor,
+                    argumentProcessor.hasOption(CLIOption.SIZE)) + "\t");
         }
     }
 
     private void printLongFormat(final FileInfo[] files,
                                  final ArgumentProcessor argumentProcessor) {
-        LongLength length = new LongLength();
+        final var length = new LongLength();
 
-        boolean IS_NO_COLORS = ArgumentProcessor.getInstance().hasOption(CLIOption.NO_COLORS);
-        boolean IS_HUMAN_READABLE = argumentProcessor.hasOption(CLIOption.HUMAN_READABLE);
+        final var IS_NO_COLORS = ArgumentProcessor.getInstance().hasOption(CLIOption.NO_COLORS);
+        final var IS_HUMAN_READABLE = argumentProcessor.hasOption(CLIOption.HUMAN_READABLE);
 
         for (FileInfo file : files) {
             length.setLongFileNameLength(
@@ -81,11 +82,11 @@ public class ListOfFiles {
             final ArgumentProcessor argumentProcessor,
             final LongLength length
     ) {
-        var IS_WITH_NO_COLORS = !argumentProcessor.hasOption(CLIOption.NO_COLORS);
-        var IS_NO_OWNER = argumentProcessor.hasOption(CLIOption.NO_OWNER);
-        var IS_PRINT_GROUP = argumentProcessor.hasOption(CLIOption.GROUP);
-        var IS_NO_DATE = argumentProcessor.hasOption(CLIOption.NO_DATE);
-        var IS_HUMAN_READABLE = argumentProcessor.hasOption(CLIOption.HUMAN_READABLE);
+        final var IS_WITH_NO_COLORS = !argumentProcessor.hasOption(CLIOption.NO_COLORS);
+        final var IS_NO_OWNER = argumentProcessor.hasOption(CLIOption.NO_OWNER);
+        final var IS_PRINT_GROUP = argumentProcessor.hasOption(CLIOption.GROUP);
+        final var IS_NO_DATE = argumentProcessor.hasOption(CLIOption.NO_DATE);
+        final var IS_HUMAN_READABLE = argumentProcessor.hasOption(CLIOption.HUMAN_READABLE);
 
         String format = "%10s  " + "%" + -length.getLongSizeLength() + "s" +
                 ((fileInfo.isDirectory() ? " " : "") + " %" +
@@ -109,9 +110,9 @@ public class ListOfFiles {
             final ArgumentProcessor argumentProcessor,
             final boolean withSize
     ) {
-        var IS_WITH_NO_COLORS = !argumentProcessor.hasOption(CLIOption.NO_COLORS);
-        var IS_HUMAN_READABLE = argumentProcessor.hasOption(CLIOption.HUMAN_READABLE);
-        var IS_NO_ICONS = argumentProcessor.hasOption(CLIOption.NO_ICONS);
+        final var IS_WITH_NO_COLORS = !argumentProcessor.hasOption(CLIOption.NO_COLORS);
+        final var IS_HUMAN_READABLE = argumentProcessor.hasOption(CLIOption.HUMAN_READABLE);
+        final var IS_NO_ICONS = argumentProcessor.hasOption(CLIOption.NO_ICONS);
 
         String format =
                 (IS_NO_ICONS ? "%s" : "%-2s ") + "%s" +
