@@ -11,8 +11,8 @@ public class ListOfFiles {
         var argumentProcessor = ArgumentProcessor.getInstance();
 
         FileInfo[] files = FilesHelper.getFiles(
-                ArgumentProcessor.getInstance().hasOption(CLIOption.ALL),
-                ArgumentProcessor.getInstance().getTargetPath()
+                argumentProcessor.hasOption(CLIOption.ALL),
+                argumentProcessor.getTargetPath()
         );
 
         if (argumentProcessor.hasOption(CLIOption.LONG)) {
