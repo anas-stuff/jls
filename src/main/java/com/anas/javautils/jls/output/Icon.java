@@ -1,7 +1,6 @@
 package com.anas.javautils.jls.output;
 
-import com.googlecode.lanterna.TextColor;
-import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
+import com.anas.javautils.jls.lanterna.TextColor;
 
 import java.nio.charset.StandardCharsets;
 
@@ -264,10 +263,12 @@ public enum Icon {
             ('\ue77f', new TextColor.RGB(3, 136, 209)),   // nuget (Not supported by nerdFont)
             */;
     private final char icon;
-    private final TextColor.RGB color;
+    private final TextColor color;
     private final String pattern;
 
-    Icon(final char icon, final TextColor.RGB color, final String pattern) {
+    Icon(final char icon,
+         final TextColor color,
+         final String pattern) {
         this.icon = icon;
         this.color = color;
         this.pattern = pattern;
@@ -286,7 +287,7 @@ public enum Icon {
         return icon;
     }
 
-    public TextColor.RGB getColor() {
+    public TextColor getColor() {
         return color;
     }
 

@@ -1,7 +1,7 @@
 package com.anas.javautils.jls.output;
 
 import com.anas.javautils.jls.utils.ColoredString;
-import com.googlecode.lanterna.TextColor;
+import com.anas.javautils.jls.lanterna.TextColor;
 
 import java.io.IOException;
 import java.nio.file.Files;
