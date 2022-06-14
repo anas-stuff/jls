@@ -6,7 +6,6 @@
         <element id="file-copy" path="$PROJECT_DIR$/src/main/java/META-INF/MANIFEST.MF" />
       </element>
       <element id="module-output" name="jls.main" />
-      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.googlecode.lanterna/lanterna/3.1.1/39126bdb16e424e03bd47267ba08b53fbd09f5b2/lanterna-3.1.1.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/commons-cli/commons-cli/1.5.0/dc98be5d5390230684a092589d70ea76a147925c/commons-cli-1.5.0.jar" path-in-jar="/" />
     </root>
   </artifact>
