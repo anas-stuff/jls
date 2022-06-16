@@ -1,12 +1,13 @@
 <component name="ArtifactManager">
-  <artifact type="jar" name="jls:jar">
-    <output-path>$PROJECT_DIR$/out/artifacts/jls_jar</output-path>
-    <root id="archive" name="jls.jar">
+  <artifact type="jar" name="jls.main:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/jls_main_jar</output-path>
+    <root id="archive" name="jls.main.jar">
       <element id="directory" name="META-INF">
         <element id="file-copy" path="$PROJECT_DIR$/src/main/java/META-INF/MANIFEST.MF" />
       </element>
       <element id="module-output" name="jls.main" />
       <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/commons-cli/commons-cli/1.5.0/dc98be5d5390230684a092589d70ea76a147925c/commons-cli-1.5.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.Anas-Elgarhy/JColorfulConsole/1.0.3/2f001219c919ead9db81055fab378a3bfcaa1514/JColorfulConsole-1.0.3.jar" path-in-jar="/" />
     </root>
   </artifact>
 </component>

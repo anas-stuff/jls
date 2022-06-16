@@ -1,7 +1,7 @@
 package com.anas.javautils.jls.output;
 
-import com.anas.javautils.jls.utils.ColoredString;
-import com.anas.javautils.jls.lanterna.TextColor;
+import com.anas.jcolorfulconsole.ColoredString;
+import com.anas.jcolorfulconsole.lanterna.TextColor;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -109,7 +109,7 @@ public class FileInfo {
             }
         }
 
-        return withColor ? str.toString() : str.getNormalString();
+        return withColor ? str.toString() : str.toNormalStringString();
     }
 
     public String getName() {
@@ -137,7 +137,7 @@ public class FileInfo {
 
         var str = new ColoredString(date, color);
 
-        return withColor ? str.toString() : str.getNormalString();
+        return withColor ? str.toString() : str.toNormalStringString();
     }
 
     public Icon getIcon() {
@@ -155,7 +155,7 @@ public class FileInfo {
                 fileAttributes != null ? fileAttributes.owner().getName() : "----", color
         );
 
-        return withColor ? str.toString() : str.getNormalString();
+        return withColor ? str.toString() : str.toNormalStringString();
     }
 
     public String getGroup(final boolean withColor) {
@@ -165,7 +165,7 @@ public class FileInfo {
                 fileAttributes != null ? fileAttributes.group().getName() : "------", color
         );
 
-        return withColor ? str.toString() : str.getNormalString();
+        return withColor ? str.toString() : str.toNormalStringString();
     }
 
     public PosixFileAttributes getFileAttributes() {

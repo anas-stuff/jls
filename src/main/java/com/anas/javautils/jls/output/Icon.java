@@ -1,6 +1,6 @@
 package com.anas.javautils.jls.output;
 
-import com.anas.javautils.jls.lanterna.TextColor;
+import com.anas.jcolorfulconsole.lanterna.TextColor;
 
 import java.nio.charset.StandardCharsets;
 
