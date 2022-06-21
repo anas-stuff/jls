@@ -299,4 +299,15 @@ public class FileInfo {
         final var icon = getIcon();
         return withColors ? icon.toString() : icon.getNoColoredIcon();
     }
+
+    public String getContentsCount(boolean WITH_COLORS) {
+        if (!isDirectory()) return "";
+        try {
+            final var str = new ColoredString(String.valueOf(Files.list(filePath).count()),
+                    new TextColor.RGB(240, 179, 73));
+            return WITH_COLORS ? str.toString() : str.toNormalStringString();
+        } catch (IOException e) {
+            return "";
+        }
+    }
 }

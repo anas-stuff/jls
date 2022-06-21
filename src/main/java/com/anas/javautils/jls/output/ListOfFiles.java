@@ -72,25 +72,21 @@ public class ListOfFiles {
                             length.getLongFileNameLength(), file.getName(!IS_NO_COLORS, WITH_TYPE).length()
                     )
             );
-
             length.setLongDateLength(
                     (byte) Math.max(
                             length.getLongDateLength(), file.getCreationTime(!IS_NO_COLORS).length()
                     )
             );
-
             length.setLongSizeLength(
                     (byte) Math.max(
                             length.getLongSizeLength(), file.getSize(IS_HUMAN_READABLE, !IS_NO_COLORS).length()
                     )
             );
-
             length.setLongOwnerLength(
                     (byte) Math.max(
                             length.getLongOwnerLength(), file.getOwner(!IS_NO_COLORS).length()
                     )
             );
-
             length.setLongGroupLength(
                     (byte) Math.max(
                             length.getLongGroupLength(), file.getGroup(!IS_NO_COLORS).length()
@@ -159,17 +155,21 @@ public class ListOfFiles {
         final var HUMAN_READABLE = argumentProcessor.hasOption(CLIOption.HUMAN_READABLE);
         final var WITH_ICONS = !argumentProcessor.hasOption(CLIOption.NO_ICONS);
         final var WITH_TYPE = !argumentProcessor.hasOption(CLIOption.NO_TYPE);
+        final var WITH_CONTENTS_COUNT = argumentProcessor.hasOption(CLIOption.CONTENTS_COUNT) &&
+                fileInfo.isDirectory();
 
         String format = (WITH_ICONS ? "%-2s " : "%s") +
                         "%s" +
                         (fileInfo.isSymlink() ? " -> %s" : "%s") +
-                        (withSize ? "  %s" : "%s");
+                        (withSize ? "  %s" : "%s") +
+                        (WITH_CONTENTS_COUNT ? "  [%s]" : "%s");
 
         return String.format(format,
                 WITH_ICONS ? fileInfo.getIcon(WITH_COLORS) : "",
                 fileInfo.getName(WITH_COLORS, WITH_TYPE),
                 fileInfo.isSymlink() ? fileInfo.getSymlinkTarget(WITH_COLORS) : "",
-                withSize ? fileInfo.getSize(HUMAN_READABLE, WITH_COLORS) : ""
+                withSize ? fileInfo.getSize(HUMAN_READABLE, WITH_COLORS) : "",
+                WITH_CONTENTS_COUNT ? fileInfo.getContentsCount(WITH_COLORS) : ""
         );
 
     }
