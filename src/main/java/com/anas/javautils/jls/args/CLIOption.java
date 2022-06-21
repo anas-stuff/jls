@@ -2,6 +2,7 @@ package com.anas.javautils.jls.args;
 
 import org.apache.commons.cli.Option;
 
+// An enum that is used to define the options that the program can take.
 public enum CLIOption {
     HELP("", "help", false, "Show this help"),
     VERSION("v", "version", false, "Show version"),
@@ -22,6 +23,7 @@ public enum CLIOption {
     SORT_BY_LAST_MODIFIED("L", "", false, "Sort by last modified (latest first)");
     private final Option option;    // Apache Commons CLI Option
 
+    // A constructor.
     CLIOption(final String shortName,
               final String longName,
               final boolean hasArgs,
@@ -29,10 +31,20 @@ public enum CLIOption {
         option = new Option(shortName, longName, hasArgs, description);
     }
 
+    /**
+     * Returns the name of the option.
+     *
+     * @return The name of the option.
+     */
     public String getName() {
         return option.getOpt();
     }
 
+    /**
+     * This function returns the option.
+     *
+     * @return The option object.
+     */
     public Option getOption() {
         return option;
     }
