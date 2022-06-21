@@ -25,7 +25,7 @@
   - Make sure you installed `wget` and [nerd font]
   - Run this command 
      ```bash
-        sudo bash <(curl -s https://raw.githubusercontent.com/Anas-Elgarhy/jls/master/scripts/install.sh)
+       curl -s https://raw.githubusercontent.com/Anas-Elgarhy/jls/master/scripts/install.sh | sudo bash
      ```
 
 ## Options table
