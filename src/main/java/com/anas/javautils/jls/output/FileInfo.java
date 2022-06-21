@@ -11,10 +11,20 @@ import java.nio.file.attribute.PosixFileAttributes;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
+/**
+ * it represents a file info.
+ *
+ * The class has a constructor that takes a `Path` object and tries to get the file attributes. If it fails, it sets the
+ * `fileAttributes` variable to `null`, but some functions will still work.
+ */
 public class FileInfo {
     private final Path filePath;
     private PosixFileAttributes fileAttributes;
 
+    /**
+     * A constructor that takes a `Path` object and tries to get the file attributes. If it fails, it sets the
+     * @param filePath The path to the file
+     */
     public FileInfo(Path filePath) {
         this.filePath = filePath;
         try {
@@ -24,6 +34,12 @@ public class FileInfo {
         }
     }
 
+    /**
+     * It returns a string containing the permissions of the file, with colors if the `withColors` parameter is true
+     *
+     * @param withColors if true, the output will be colored.
+     * @return A string that represents the permissions of the file.
+     */
     public String getPermissions(final boolean withColors) {
         // TODO: dynamically get the colors;
         var RColor = withColors ?  new TextColor.RGB(253, 188, 75) : null;
@@ -62,6 +78,12 @@ public class FileInfo {
         return sb.toString();
     }
 
+    /**
+     * > It converts the given size to the appropriate unit and returns the unit and the size in that unit
+     *
+     * @param size The size of the file in bytes.
+     * @return An array of objects.
+     */
     private Object[] calculateUnitNSize(float size) {
         var unit = "B";
         if (size >= 1024) {
@@ -87,6 +109,13 @@ public class FileInfo {
         return new Object[]{unit, size};
     }
 
+    /**
+     * It returns the size of the file as a string, with colors if the `withColors` parameter is true
+     *
+     * @param humanReadable If true, the size will be displayed in a human readable format.
+     * @param withColor If true, the string will be colored.
+     * @return The size of the file as a string. If the `humanReadable` parameter is true, the size will be displayed in a human readable format.
+     */
     public String getSize(final boolean humanReadable,
                           final boolean withColor) {
         var strColor = new TextColor.RGB(124, 124, 124);
@@ -112,10 +141,21 @@ public class FileInfo {
         return withColor ? str.toString() : str.toNormalStringString();
     }
 
+    /**
+     * Returns the name of the current file.
+     *
+     * @return The name of the current file.
+     */
     public String getName() {
         return getName(false);
     }
 
+    /**
+     * It returns the name of the file, with or without color
+     *
+     * @param withColor whether or not to color the string.
+     * @return A string containing the name of the file.
+     */
     public String getName(final boolean withColor) {
         var strName = filePath.getFileName().toString();
 
@@ -140,6 +180,14 @@ public class FileInfo {
         return withColor ? str.toString() : str.toNormalStringString();
     }
 
+    /**
+     * "If the file has an icon, return it, otherwise return the default icon for the file type."
+     *
+     * The first line of the function calls the static method `Icon.getCorrectIcon(String)` to get the icon for the file.
+     * If the file has an icon, the method returns it. If the file doesn't have an icon, the method returns `null`
+     *
+     * @return The icon for the file.
+     */
     public Icon getIcon() {
         Icon icon = Icon.getCorrectIcon(getName());
 
@@ -148,6 +196,12 @@ public class FileInfo {
         return isDirectory() ? Icon.DIR : Icon.FILE;
     }
 
+    /**
+     * It returns the owner of the file, with or without color
+     *
+     * @param withColor whether to return the string with color or not.
+     * @return The owner of the file.
+     */
     public String getOwner(final boolean withColor) {
         // TODO: dynamically get the colors;
         var color = new TextColor.RGB(240, 179, 73);
@@ -158,6 +212,12 @@ public class FileInfo {
         return withColor ? str.toString() : str.toNormalStringString();
     }
 
+    /**
+     * It returns the group of the file, with or without color
+     *
+     * @param withColor whether to return the string with color.
+     * @return The group name of the file.
+     */
     public String getGroup(final boolean withColor) {
         // TODO: dynamically get the colors;
         var color = new TextColor.RGB(240, 179, 73);
@@ -168,22 +228,50 @@ public class FileInfo {
         return withColor ? str.toString() : str.toNormalStringString();
     }
 
+    /**
+     * This function returns the posix permissions of the file.
+     *
+     * @return The file attributes of the file.
+     */
     public PosixFileAttributes getFileAttributes() {
         return fileAttributes;
     }
 
+    /**
+     * If the fileAttributes object is not null and the fileAttributes object is a directory, then return true.
+     *
+     * @return A boolean value, true if the file is a directory.
+     */
     public boolean isDirectory() {
         return fileAttributes != null && fileAttributes.isDirectory();
     }
 
+    /**
+     * Returns true if the file is a symbolic link.
+     *
+     * @return A boolean value indicating whether the file is a symbolic link.
+     */
     public boolean isSymlink() {
         return Files.isSymbolicLink(filePath);
     }
 
+    /**
+     * "If the file is a symlink, return the target of the symlink. Otherwise, return the empty string."
+     *
+     * The function is a bit more complicated than that, but that's the gist of it
+     *
+     * @return The target of the symbolic link, without color.
+     */
     public String getSymlinkTarget() {
         return getSymlinkTarget(false);
     }
 
+    /**
+     * It returns the target of a symlink
+     *
+     * @param withColors If true, the target will be colored.
+     * @return The target of the symlink.
+     */
     public String getSymlinkTarget(final boolean withColors) {
 
         if (!isSymlink()) return "";
