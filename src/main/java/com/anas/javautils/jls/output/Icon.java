@@ -274,6 +274,12 @@ public enum Icon {
         this.pattern = pattern;
     }
 
+    /**
+     * Checking the file extension and returning the appropriate icon.
+     *
+     * @param fileName The file name to check.
+     * @return The icon for the file, null if no icon is found.
+     */
     public static Icon getCorrectIcon(final String fileName) {
         for (Icon icon : values()) {
             if (icon.matches(fileName)) {
@@ -283,18 +289,37 @@ public enum Icon {
         return null;
     }
 
+    /**
+     * Get the icon code.
+     * @return The icon code.
+     */
     public char getIcon() {
         return icon;
     }
 
+    /**
+     * Get the icon color.
+     * @return The icon color.
+     */
     public TextColor getColor() {
         return color;
     }
 
+    /**
+     * Get the icon pattern.
+     * @return The icon pattern.
+     */
     public String getPattern() {
         return pattern;
     }
 
+    /**
+     * Check if the file name matches the pattern.
+     *
+     * @param fileName The file name to check.
+     * @return True if the file name matches the pattern, false otherwise.
+     */
+    // TODO: 6/21/22 Fix case sensitive matching :)
     private boolean matches(final String fileName) {
         for (String pat : pattern.split("\\|")) {
             boolean caseSensitive = pat.startsWith(("{")) && pat.endsWith(("}"));
@@ -312,6 +337,10 @@ public enum Icon {
         return false;
     }
 
+    /**
+     * Get the icon with the icon color.
+     * @return The icon with the icon color.
+     */
     @Override
     public String toString() {
         return "\033[" +
@@ -319,6 +348,10 @@ public enum Icon {
                 icon + "\033[0m";
     }
 
+    /**
+     * Get the icon without color.
+     * @return the icon char without color.
+     */
     public String getNoColoredIcon() {
         return icon + "";
     }
