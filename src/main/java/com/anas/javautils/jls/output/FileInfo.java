@@ -118,17 +118,16 @@ public class FileInfo {
      */
     public String getSize(final boolean humanReadable,
                           final boolean withColor) {
-        var strColor = new TextColor.RGB(124, 124, 124);
+        final var strColor = new TextColor.RGB(124, 124, 124);
         var str = new ColoredString("-", strColor);
 
         if (!Files.isDirectory(filePath)) {
             var size = (float) (fileAttributes != null ? fileAttributes.size() : 0);
             var unit = "B";
-
-            var color = new TextColor.RGB(28, 108, 117);
+            final var color = new TextColor.RGB(28, 108, 117);
 
             if (humanReadable) {
-                var calculation = calculateUnitNSize(size);
+                final var calculation = calculateUnitNSize(size);
                 unit = (String) calculation[0];
                 size = (float) calculation[1];
 
@@ -137,7 +136,6 @@ public class FileInfo {
                 str = new ColoredString(String.format("%d %s", (int) size, unit), color);
             }
         }
-
         return withColor ? str.toString() : str.toNormalStringString();
     }
 
