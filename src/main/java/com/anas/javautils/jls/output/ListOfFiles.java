@@ -8,14 +8,11 @@ import java.io.IOException;
 
 /**
  * "Prints the files in the target directory in either short or long format, depending on the command line arguments."
- * <p>
- * The first thing we do is get the instance of the `ArgumentProcessor` class. This class is a singleton that holds the
- * command line arguments
  */
 public class ListOfFiles {
     /**
      * "Prints the files in the target directory in either short or long format, depending on the command line arguments."
-     * <p>
+     *
      * The first thing we do is get the instance of the `ArgumentProcessor` class. This class is a singleton that holds the
      * command line arguments
      * @throws IOException If there is an error reading the files.
