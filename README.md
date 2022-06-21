@@ -21,30 +21,30 @@
 
 ## Options table
 
-| Option                      | Value                                           | Description                                                     |
-|-----------------------------|-------------------------------------------------|-----------------------------------------------------------------|
-| `--help`                    | n/a                                             | Show help message                                               |
-| `-v` or `--version`         | n/a                                             | Show version                                                    |
-| `-a` or `--all`             | n/a                                             | Show all files including hidden files                           |
-| `-l` or `--long`            | n/a                                             | Show long format                                                |
-| `-G` or `--group`           | n/a                                             | Show group name in long format                                  |
-| `-h` or `--human-readable`  | n/a                                             | Show human readable size                                        |
-| `-s` or `--size`            | n/a                                             | Show file size in normal format                                 |
-| `-S`                        | n/a                                             | Sort by size (largest first)                                    |
-| `-R` or `--revcursive`      | n/a                                             | Show files in sub-directories recursively (not implemented yet) |
-| `-nc` or `--no-icons`       | n/a                                             | Don't show icons                                                |
-| `-ic` or `--icons-color`    | Icon color in hex format or Auto for auto color | Use custom icons color (not implemented yet)                    |
-| `-tc` or `--text-color`     | Text color in hex format or Auto for auto color | Use custom text color (not implemented yet)                     |
-| `--no-owner`                | n/a                                             | Don't show owner name in long format                            |
-| `--no-colors`               | n/a                                             | Don't use colors                                                |
-| `-nd` or `--no-date`        | n/a                                             | Don't show last modified date                                   |
-| `-nn` or `--no-name`        | n/a                                             | Don't show file name                                            |
-| `-L`                        | n/a                                             | Sort by last modified date (latest first)                       |
- | `np` or `--no-permissions`  | n/a                                             | Don't show permissions in long format                           |
- | `-ns` or `--no-size`        | n/a                                             | Don't show the file size                                        |
- | `-nt` or `--no-type`        | n/a                                             | Don't show the file type                                        |
- | `-c` or `--contents-count`  | n/a                                             | Show the number of files in the directory                       |
- | `-t` or `--tree`            | n/a                                             | Show the directory tree (not implemented yet)                   |
+| Option                     | Value                                           | Description                                                     |
+|----------------------------|-------------------------------------------------|-----------------------------------------------------------------|
+| `--help`                   | n/a                                             | Show help message                                               |
+| `-v` or `--version`        | n/a                                             | Show version                                                    |
+| `-a` or `--all`            | n/a                                             | Show all files including hidden files                           |
+| `-l` or `--long`           | n/a                                             | Show long format                                                |
+| `-G` or `--group`          | n/a                                             | Show group name in long format                                  |
+| `-h` or `--human-readable` | n/a                                             | Show human readable size                                        |
+| `-s` or `--size`           | n/a                                             | Show file size in normal format                                 |
+| `-S`                       | n/a                                             | Sort by size (largest first)                                    |
+| `-R` or `--revcursive`     | n/a                                             | Show files in sub-directories recursively (not implemented yet) |
+| `-ni` or `--no-icons`      | n/a                                             | Don't show icons                                                |
+| `-ic` or `--icons-color`   | Icon color in hex format or Auto for auto color | Use custom icons color (not implemented yet)                    |
+| `-tc` or `--text-color`    | Text color in hex format or Auto for auto color | Use custom text color (not implemented yet)                     |
+| `-no` or `--no-owner`      | n/a                                             | Don't show owner name in long format                            |
+| `-nc` or `--no-colors`     | n/a                                             | Don't use colors                                                |
+| `-nd` or `--no-date`       | n/a                                             | Don't show last modified date                                   |
+| `-nn` or `--no-name`       | n/a                                             | Don't show file name                                            |
+| `-L`                       | n/a                                             | Sort by last modified date (latest first)                       |
+ | `np` or `--no-permissions` | n/a                                             | Don't show permissions in long format                           |
+ | `-ns` or `--no-size`       | n/a                                             | Don't show the file size                                        |
+ | `-nt` or `--no-type`       | n/a                                             | Don't show the file type                                        |
+ | `-c` or `--contents-count` | n/a                                             | Show the number of files in the directory                       |
+ | `-t` or `--tree`           | n/a                                             | Show the directory tree (not implemented yet)                   |
 
 ## Requirements for development:
 
