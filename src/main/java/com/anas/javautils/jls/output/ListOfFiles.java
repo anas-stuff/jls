@@ -119,15 +119,17 @@ public class ListOfFiles {
         final var IS_PRINT_GROUP = argumentProcessor.hasOption(CLIOption.GROUP);
         final var IS_NO_DATE = argumentProcessor.hasOption(CLIOption.NO_DATE);
         final var IS_HUMAN_READABLE = argumentProcessor.hasOption(CLIOption.HUMAN_READABLE);
+        final var IS_NO_PERMISSIONS = argumentProcessor.hasOption(CLIOption.NO_PERMISSIONS);
 
-        String format = "%10s  " + "%" + -length.getLongSizeLength() + "s" +
+        String format = "%" + (!IS_NO_PERMISSIONS ? "10s " : "s") +
+                "%" + -length.getLongSizeLength() + "s" +
                 ((fileInfo.isDirectory() ? " " : "") + " %" +
                         (!IS_NO_OWNER ? (-length.getLongOwnerLength() + "s  ") : "s")) + "%" +
                 (IS_PRINT_GROUP ? (-length.getLongGroupLength() + "s  ") : "s") + "%" +
                 (!IS_NO_DATE ? (-length.getLongDateLength() + "s  ") : "s") + "%s";
 
         return String.format(format,
-                fileInfo.getPermissions(IS_WITH_NO_COLORS),
+                !IS_NO_PERMISSIONS ? fileInfo.getPermissions(IS_WITH_NO_COLORS) : "",
                 fileInfo.getSize(IS_HUMAN_READABLE, IS_WITH_NO_COLORS),
                 !IS_NO_OWNER ? fileInfo.getOwner(IS_WITH_NO_COLORS) : "",
                 IS_PRINT_GROUP ? fileInfo.getGroup(IS_WITH_NO_COLORS) : "",
