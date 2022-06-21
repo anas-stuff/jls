@@ -15,7 +15,7 @@ mkdir -p "$INSTALL_PATH"
 echo "Install version: $VERSION"
 echo "Downloading jar file..."
 sudo wget "https://github.com/Anas-Elgarhy/jls/releases/download/$VERSION/jls.jar"
-sudo mv ./jls.main.jar "$INSTALL_PATH"/jls.jar
+sudo mv ./jls.jar "$INSTALL_PATH"/jls.jar
 
 printf "\nDownloaded in %s/jls.jar\n" $INSTALL_PATH
 
