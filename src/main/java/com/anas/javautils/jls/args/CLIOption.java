@@ -10,7 +10,7 @@ public enum CLIOption {
     LONG("l", "long", false, "Print the long format"),
     GROUP("G", "group", false, "Print the group"),
     HUMAN_READABLE("h", "human-readable", false, "Print the human readable format"),
-    SIZE("s", "size", false, "Print the size"),
+    SIZE("s", "size", false, "Print the size in the short format"),
     SORT_BY_SIZE("S", "", false, "Sort by size (largest first)"),
     RECURSIVE("R", "recursive", false, "List subdirectories recursively"),
     NO_ICONS("nc", "no-icons", false, "Don't show icons"),

@@ -8,14 +8,14 @@ import java.io.IOException;
 
 /**
  * "Prints the files in the target directory in either short or long format, depending on the command line arguments."
- *
+ * <p>
  * The first thing we do is get the instance of the `ArgumentProcessor` class. This class is a singleton that holds the
  * command line arguments
  */
 public class ListOfFiles {
     /**
      * "Prints the files in the target directory in either short or long format, depending on the command line arguments."
-     *
+     * <p>
      * The first thing we do is get the instance of the `ArgumentProcessor` class. This class is a singleton that holds the
      * command line arguments
      */
@@ -35,10 +35,11 @@ public class ListOfFiles {
     }
 
     // TODO: 6/9/22 Complete this method :')
+
     /**
      * It prints the short format of the files
      *
-     * @param files The list of files to be printed
+     * @param files             The list of files to be printed
      * @param argumentProcessor The argument processor that contains the command line arguments.
      */
     private void printShortFormat(final FileInfo[] files,
@@ -54,7 +55,7 @@ public class ListOfFiles {
     /**
      * It prints the files in a long format
      *
-     * @param files The array of files to be printed.
+     * @param files             The array of files to be printed.
      * @param argumentProcessor The argument processor.
      */
     private void printLongFormat(final FileInfo[] files,
@@ -104,9 +105,9 @@ public class ListOfFiles {
     /**
      * It returns a string that contains the file's information in the long format
      *
-     * @param fileInfo FileInfo object
+     * @param fileInfo          FileInfo object
      * @param argumentProcessor The ArgumentProcessor object that contains all the arguments passed to the program.
-     * @param length the length of the longest file name, owner name, group name, and date.
+     * @param length            the length of the longest file name, owner name, group name, and date.
      * @return The long format of the file info.
      */
     private String getLongFormat(
@@ -115,25 +116,26 @@ public class ListOfFiles {
             final LongLength length
     ) {
         final var IS_WITH_NO_COLORS = !argumentProcessor.hasOption(CLIOption.NO_COLORS);
-        final var IS_NO_OWNER = argumentProcessor.hasOption(CLIOption.NO_OWNER);
-        final var IS_PRINT_GROUP = argumentProcessor.hasOption(CLIOption.GROUP);
-        final var IS_NO_DATE = argumentProcessor.hasOption(CLIOption.NO_DATE);
-        final var IS_HUMAN_READABLE = argumentProcessor.hasOption(CLIOption.HUMAN_READABLE);
-        final var IS_NO_PERMISSIONS = argumentProcessor.hasOption(CLIOption.NO_PERMISSIONS);
+        final var WITH_OWNER = !argumentProcessor.hasOption(CLIOption.NO_OWNER);
+        final var WITH_GROUP = !argumentProcessor.hasOption(CLIOption.GROUP);
+        final var WITH_DATE = !argumentProcessor.hasOption(CLIOption.NO_DATE);
+        final var WITH_PERMISSIONS = !argumentProcessor.hasOption(CLIOption.NO_PERMISSIONS);
+        final var WITH_SIZE = !argumentProcessor.hasOption(CLIOption.NO_SIZE);
 
-        String format = "%" + (!IS_NO_PERMISSIONS ? "10s " : "s") +
-                "%" + -length.getLongSizeLength() + "s" +
-                ((fileInfo.isDirectory() ? " " : "") + " %" +
-                        (!IS_NO_OWNER ? (-length.getLongOwnerLength() + "s  ") : "s")) + "%" +
-                (IS_PRINT_GROUP ? (-length.getLongGroupLength() + "s  ") : "s") + "%" +
-                (!IS_NO_DATE ? (-length.getLongDateLength() + "s  ") : "s") + "%s";
+        final var HUMAN_READABLE = argumentProcessor.hasOption(CLIOption.HUMAN_READABLE);
+
+        String format = "%" + (WITH_PERMISSIONS ? "10s " : "s") +
+                ("%" +  (WITH_SIZE ? -length.getLongSizeLength() : "") + "s") +
+                (" %" + (WITH_OWNER ? (-length.getLongOwnerLength() + "s  ") : "s")) +
+                ("%" + (WITH_GROUP ? (-length.getLongGroupLength() + "s  ") : "s")) +
+                ("%" + (WITH_DATE ? (-length.getLongDateLength() + "s  ") : "s") + "%s");
 
         return String.format(format,
-                !IS_NO_PERMISSIONS ? fileInfo.getPermissions(IS_WITH_NO_COLORS) : "",
-                fileInfo.getSize(IS_HUMAN_READABLE, IS_WITH_NO_COLORS),
-                !IS_NO_OWNER ? fileInfo.getOwner(IS_WITH_NO_COLORS) : "",
-                IS_PRINT_GROUP ? fileInfo.getGroup(IS_WITH_NO_COLORS) : "",
-                !IS_NO_DATE ? fileInfo.getCreationTime(IS_WITH_NO_COLORS) : "",
+                WITH_PERMISSIONS ? fileInfo.getPermissions(IS_WITH_NO_COLORS) : "",
+                WITH_SIZE ?  fileInfo.getSize(HUMAN_READABLE, IS_WITH_NO_COLORS) : "",
+                WITH_OWNER ? fileInfo.getOwner(IS_WITH_NO_COLORS) : "",
+                WITH_GROUP ? fileInfo.getGroup(IS_WITH_NO_COLORS) : "",
+                WITH_DATE ? fileInfo.getCreationTime(IS_WITH_NO_COLORS) : "",
                 getShortFormat(fileInfo, argumentProcessor, false)
         );
 
@@ -142,9 +144,9 @@ public class ListOfFiles {
     /**
      * It returns a string representation of a file info object
      *
-     * @param fileInfo the file info object
+     * @param fileInfo          the file info object
      * @param argumentProcessor The ArgumentProcessor object that contains all the arguments passed to the program.
-     * @param withSize if true, the size of the file will be displayed
+     * @param withSize          if true, the size of the file will be displayed
      * @return A string that contains the file name, the file size, and the file type.
      */
     private String getShortFormat(
