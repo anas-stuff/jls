@@ -153,13 +153,13 @@ public class FileInfo {
      * > This function returns the name of the file, with or without the file extension, and with or without color
      *
      * @param withColor whether or not to color the name
-     * @param WITH_TYPE if true, the file name will be returned with the file extension.
+     * @param withType if true, the file name will be returned with the file extension.
      * @return A string representing the name of the file.
      */
-    public String getName(final boolean withColor, boolean WITH_TYPE) {
+    public String getName(final boolean withColor, final boolean withType) {
         var strName = filePath.getFileName().toString();
 
-        if (!WITH_TYPE) {
+        if (!withType) {
             strName = strName.substring(0, strName.lastIndexOf(".") == -1 ?
                     strName.length() : strName.lastIndexOf("."));
         }
