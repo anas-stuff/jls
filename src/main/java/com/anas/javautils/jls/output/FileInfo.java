@@ -295,17 +295,31 @@ public class FileInfo {
         }
     }
 
+    /**
+     * Get the file icon
+     *
+     * @param withColors If true, the icon will be colored. If false, the icon will be uncolored.
+     * @return The icon of the file.
+     */
     public String getIcon(boolean withColors) {
         final var icon = getIcon();
         return withColors ? icon.toString() : icon.getNoColoredIcon();
     }
 
-    public String getContentsCount(boolean WITH_COLORS) {
+    /**
+     * "If the file is a directory, return the number of files in it, otherwise return an empty string."
+     *
+     * The function is a bit more complicated than that, but that's the gist of it
+     *
+     * @param withColors If true, the returned string will be colored. If false, the returned string will be normal.
+     * @return The number of files in the directory.
+     */
+    public String getContentsCount(boolean withColors) {
         if (!isDirectory()) return "";
         try {
             final var str = new ColoredString(String.valueOf(Files.list(filePath).count()),
                     new TextColor.RGB(240, 179, 73));
-            return WITH_COLORS ? str.toString() : str.toNormalStringString();
+            return withColors ? str.toString() : str.toNormalStringString();
         } catch (IOException e) {
             return "";
         }
