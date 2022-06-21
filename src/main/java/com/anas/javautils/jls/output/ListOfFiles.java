@@ -18,6 +18,7 @@ public class ListOfFiles {
      * <p>
      * The first thing we do is get the instance of the `ArgumentProcessor` class. This class is a singleton that holds the
      * command line arguments
+     * @throws IOException If there is an error reading the files.
      */
     public void printFiles() throws IOException {
         final var argumentProcessor = ArgumentProcessor.getInstance();
@@ -62,7 +63,7 @@ public class ListOfFiles {
                                  final ArgumentProcessor argumentProcessor) {
         final var length = new LongLength();
 
-        final var IS_NO_COLORS = ArgumentProcessor.getInstance().hasOption(CLIOption.NO_COLORS);
+        final var IS_NO_COLORS = argumentProcessor.hasOption(CLIOption.NO_COLORS);
         final var IS_HUMAN_READABLE = argumentProcessor.hasOption(CLIOption.HUMAN_READABLE);
         final var WITH_TYPE = !argumentProcessor.hasOption(CLIOption.NO_TYPE);
 
@@ -122,14 +123,14 @@ public class ListOfFiles {
         final var HUMAN_READABLE = argumentProcessor.hasOption(CLIOption.HUMAN_READABLE);
 
         String format = ("%" + (WITH_PERMISSIONS ? "10s " : "s") + (fileInfo.isDirectory() ? " " : "")) +
-                ("%" +  (WITH_SIZE ? -length.getLongSizeLength() : "") + "s") +
-                (" %" + (WITH_OWNER ? (-length.getLongOwnerLength() + "s  ") : "s")) +
+                ("%" +  (WITH_SIZE ? -length.getLongSizeLength() + "s " : "s")) +
+                ("%" + (WITH_OWNER ? (-length.getLongOwnerLength() + "s  ") : "s")) +
                 ("%" + (WITH_GROUP ? (-length.getLongGroupLength() + "s  ") : "s")) +
                 ("%" + (WITH_DATE ? (-length.getLongDateLength() + "s  ") : "s") + "%s");
 
         return String.format(format,
                 WITH_PERMISSIONS ? fileInfo.getPermissions(IS_WITH_NO_COLORS) : "",
-                WITH_SIZE ?  fileInfo.getSize(HUMAN_READABLE, IS_WITH_NO_COLORS) : "",
+                WITH_SIZE ? fileInfo.getSize(HUMAN_READABLE, IS_WITH_NO_COLORS) : "",
                 WITH_OWNER ? fileInfo.getOwner(IS_WITH_NO_COLORS) : "",
                 WITH_GROUP ? fileInfo.getGroup(IS_WITH_NO_COLORS) : "",
                 WITH_DATE ? fileInfo.getCreationTime(IS_WITH_NO_COLORS) : "",
