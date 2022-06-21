@@ -21,7 +21,7 @@ printf "\nDownloaded in %s/jls.jar\n" $INSTALL_PATH
 
 echo "Create the executable file in /bin"
 # shellcheck disable=SC2024
-sudo echo "exec /usr/bin/java -jar $INSTALL_PATH/jls.jar" >>  /bin/jls
+sudo echo "exec /usr/bin/java -jar $INSTALL_PATH/jls.jar \$@" >>  /bin/jls
 
 sudo chmod +x /bin/jls
 
