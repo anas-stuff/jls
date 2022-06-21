@@ -21,12 +21,21 @@
 - More customization options
 
 ## Install
+
 - Linux
-  - Make sure you installed `wget` and [nerd font]
-  - Run this command 
-     ```bash
-       curl -s https://raw.githubusercontent.com/Anas-Elgarhy/jls/master/scripts/install.sh | sudo bash
-     ```
+    - Make sure you installed `wget` and [nerd font](https://www.nerdfonts.com)
+    - Run this command
+       ```bash
+        curl -s https://raw.githubusercontent.com/Anas-Elgarhy/jls/master/scripts/install.sh | sudo bash
+       ```
+
+## Uninstall
+
+- Linux
+    - Run this command
+      ```bash
+        curl -s https://raw.githubusercontent.com/Anas-Elgarhy/jls/master/scripts/uninstall.sh | sudo bash
+      ```
 
 ## Options table
 
@@ -49,11 +58,11 @@
 | `-nd` or `--no-date`       | n/a                                             | Don't show last modified date                                   |
 | `-nn` or `--no-name`       | n/a                                             | Don't show file name                                            |
 | `-L`                       | n/a                                             | Sort by last modified date (latest first)                       |
- | `np` or `--no-permissions` | n/a                                             | Don't show permissions in long format                           |
- | `-ns` or `--no-size`       | n/a                                             | Don't show the file size                                        |
- | `-nt` or `--no-type`       | n/a                                             | Don't show the file type                                        |
- | `-c` or `--contents-count` | n/a                                             | Show the number of files in the directory                       |
- | `-t` or `--tree`           | n/a                                             | Show the directory tree (not implemented yet)                   |
+| `np` or `--no-permissions` | n/a                                             | Don't show permissions in long format                           |
+| `-ns` or `--no-size`       | n/a                                             | Don't show the file size                                        |
+| `-nt` or `--no-type`       | n/a                                             | Don't show the file type                                        |
+| `-c` or `--contents-count` | n/a                                             | Show the number of files in the directory                       |
+| `-t` or `--tree`           | n/a                                             | Show the directory tree (not implemented yet)                   |
 
 ## Requirements for development:
 
