@@ -10,7 +10,7 @@ public enum CLIOption {
     LONG("l", "long", false, "Print the long format"),
     GROUP("G", "group", false, "Print the group"),
     HUMAN_READABLE("h", "human-readable", false, "Print the human readable format"),
-    SIZE("s", "size", false, "Print the size"),
+    SIZE("s", "size", false, "Print the size in the short format"),
     SORT_BY_SIZE("S", "", false, "Sort by size (largest first)"),
     RECURSIVE("R", "recursive", false, "List subdirectories recursively"),
     NO_ICONS("nc", "no-icons", false, "Don't show icons"),
@@ -20,7 +20,13 @@ public enum CLIOption {
     NO_COLORS("", "no-colors", false, "Don't use colors"),
     NO_DATE("nd", "no-date", false, "Don't show date in long format"),
     NO_NAME("nn", "no-name", false, "Don't show name"),
-    SORT_BY_LAST_MODIFIED("L", "", false, "Sort by last modified (latest first)");
+    SORT_BY_LAST_MODIFIED("L", "", false, "Sort by last modified (latest first)"),
+    NO_PERMISSIONS("np", "no-permissions", false, "Don't show the permissions in long format"),
+    NO_SIZE("ns", "no-size", false, "Don't show size"),
+    NO_TYPE("nt", "no-type", false, "Don't show type"),
+    CONTENTS_COUNT("c", "contents-count", false, "Print the number of files in the directory"),
+    TREE("t", "tree", false, "Print the tree"),
+    ;
     private final Option option;    // Apache Commons CLI Option
 
     // A constructor.

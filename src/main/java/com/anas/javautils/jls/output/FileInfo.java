@@ -145,20 +145,27 @@ public class FileInfo {
      * @return The name of the current file.
      */
     public String getName() {
-        return getName(false);
+        return getName(false, true);
     }
 
+
     /**
-     * It returns the name of the file, with or without color
+     * > This function returns the name of the file, with or without the file extension, and with or without color
      *
-     * @param withColor whether or not to color the string.
-     * @return A string containing the name of the file.
+     * @param withColor whether or not to color the name
+     * @param withType if true, the file name will be returned with the file extension.
+     * @return A string representing the name of the file.
      */
-    public String getName(final boolean withColor) {
+    public String getName(final boolean withColor, final boolean withType) {
         var strName = filePath.getFileName().toString();
 
+        if (!withType) {
+            strName = strName.substring(0, strName.lastIndexOf(".") == -1 ?
+                    strName.length() : strName.lastIndexOf("."));
+        }
+
         // TODO: dynamically get the colors;
-        var color = new TextColor.RGB(150, 153, 91);
+        final var color = new TextColor.RGB(150, 153, 91);
 
         return withColor ? new ColoredString(strName, color).toString() : strName;
     }
@@ -284,6 +291,36 @@ public class FileInfo {
 
         } catch (IOException e) {
             // TODO: Log the error;
+            return "";
+        }
+    }
+
+    /**
+     * Get the file icon
+     *
+     * @param withColors If true, the icon will be colored. If false, the icon will be uncolored.
+     * @return The icon of the file.
+     */
+    public String getIcon(boolean withColors) {
+        final var icon = getIcon();
+        return withColors ? icon.toString() : icon.getNoColoredIcon();
+    }
+
+    /**
+     * "If the file is a directory, return the number of files in it, otherwise return an empty string."
+     *
+     * The function is a bit more complicated than that, but that's the gist of it
+     *
+     * @param withColors If true, the returned string will be colored. If false, the returned string will be normal.
+     * @return The number of files in the directory.
+     */
+    public String getContentsCount(boolean withColors) {
+        if (!isDirectory()) return "";
+        try {
+            final var str = new ColoredString(String.valueOf(Files.list(filePath).count()),
+                    new TextColor.RGB(240, 179, 73));
+            return withColors ? str.toString() : str.toNormalStringString();
+        } catch (IOException e) {
             return "";
         }
     }
