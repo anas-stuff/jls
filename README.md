@@ -18,6 +18,15 @@
 
 - Support text color.
 - Support icons for file type (require [nerd-font](https://www.nerdfonts.com)).
+- More customization options
+
+## Install
+- Linux
+  - Make sure you installed `wget` and [nerd font]
+  - Run this command 
+     ```bash
+        sudo bash <(curl -s https://raw.githubusercontent.com/Anas-Elgarhy/jls/master/scripts/install.sh)
+     ```
 
 ## Options table
 
