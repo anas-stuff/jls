@@ -6,7 +6,19 @@ import com.anas.javautils.jls.utils.LongLength;
 
 import java.io.IOException;
 
+/**
+ * "Prints the files in the target directory in either short or long format, depending on the command line arguments."
+ *
+ * The first thing we do is get the instance of the `ArgumentProcessor` class. This class is a singleton that holds the
+ * command line arguments
+ */
 public class ListOfFiles {
+    /**
+     * "Prints the files in the target directory in either short or long format, depending on the command line arguments."
+     *
+     * The first thing we do is get the instance of the `ArgumentProcessor` class. This class is a singleton that holds the
+     * command line arguments
+     */
     public void printFiles() throws IOException {
         final var argumentProcessor = ArgumentProcessor.getInstance();
 
@@ -23,6 +35,12 @@ public class ListOfFiles {
     }
 
     // TODO: 6/9/22 Complete this method :')
+    /**
+     * It prints the short format of the files
+     *
+     * @param files The list of files to be printed
+     * @param argumentProcessor The argument processor that contains the command line arguments.
+     */
     private void printShortFormat(final FileInfo[] files,
                                   final ArgumentProcessor argumentProcessor) {
         // var terminalWidth = new TerminalScreen(new DefaultTerminalFactory().createTerminal())
@@ -33,6 +51,12 @@ public class ListOfFiles {
         }
     }
 
+    /**
+     * It prints the files in a long format
+     *
+     * @param files The array of files to be printed.
+     * @param argumentProcessor The argument processor.
+     */
     private void printLongFormat(final FileInfo[] files,
                                  final ArgumentProcessor argumentProcessor) {
         final var length = new LongLength();
@@ -77,6 +101,14 @@ public class ListOfFiles {
         }
     }
 
+    /**
+     * It returns a string that contains the file's information in the long format
+     *
+     * @param fileInfo FileInfo object
+     * @param argumentProcessor The ArgumentProcessor object that contains all the arguments passed to the program.
+     * @param length the length of the longest file name, owner name, group name, and date.
+     * @return The long format of the file info.
+     */
     private String getLongFormat(
             final FileInfo fileInfo,
             final ArgumentProcessor argumentProcessor,
@@ -105,6 +137,14 @@ public class ListOfFiles {
 
     }
 
+    /**
+     * It returns a string representation of a file info object
+     *
+     * @param fileInfo the file info object
+     * @param argumentProcessor The ArgumentProcessor object that contains all the arguments passed to the program.
+     * @param withSize if true, the size of the file will be displayed
+     * @return A string that contains the file name, the file size, and the file type.
+     */
     private String getShortFormat(
             final FileInfo fileInfo,
             final ArgumentProcessor argumentProcessor,
