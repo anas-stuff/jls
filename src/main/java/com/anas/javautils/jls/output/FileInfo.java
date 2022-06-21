@@ -145,20 +145,27 @@ public class FileInfo {
      * @return The name of the current file.
      */
     public String getName() {
-        return getName(false);
+        return getName(false, true);
     }
 
+
     /**
-     * It returns the name of the file, with or without color
+     * > This function returns the name of the file, with or without the file extension, and with or without color
      *
-     * @param withColor whether or not to color the string.
-     * @return A string containing the name of the file.
+     * @param withColor whether or not to color the name
+     * @param WITH_TYPE if true, the file name will be returned with the file extension.
+     * @return A string representing the name of the file.
      */
-    public String getName(final boolean withColor) {
+    public String getName(final boolean withColor, boolean WITH_TYPE) {
         var strName = filePath.getFileName().toString();
 
+        if (!WITH_TYPE) {
+            strName = strName.substring(0, strName.lastIndexOf(".") == -1 ?
+                    strName.length() : strName.lastIndexOf("."));
+        }
+
         // TODO: dynamically get the colors;
-        var color = new TextColor.RGB(150, 153, 91);
+        final var color = new TextColor.RGB(150, 153, 91);
 
         return withColor ? new ColoredString(strName, color).toString() : strName;
     }
@@ -286,5 +293,10 @@ public class FileInfo {
             // TODO: Log the error;
             return "";
         }
+    }
+
+    public String getIcon(boolean withColors) {
+        final var icon = getIcon();
+        return withColors ? icon.toString() : icon.getNoColoredIcon();
     }
 }

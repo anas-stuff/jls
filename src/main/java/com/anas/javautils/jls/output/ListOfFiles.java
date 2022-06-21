@@ -64,11 +64,12 @@ public class ListOfFiles {
 
         final var IS_NO_COLORS = ArgumentProcessor.getInstance().hasOption(CLIOption.NO_COLORS);
         final var IS_HUMAN_READABLE = argumentProcessor.hasOption(CLIOption.HUMAN_READABLE);
+        final var WITH_TYPE = !argumentProcessor.hasOption(CLIOption.NO_TYPE);
 
         for (FileInfo file : files) {
             length.setLongFileNameLength(
                     (byte) Math.max(
-                            length.getLongFileNameLength(), file.getName(!IS_NO_COLORS).length()
+                            length.getLongFileNameLength(), file.getName(!IS_NO_COLORS, WITH_TYPE).length()
                     )
             );
 
@@ -124,7 +125,7 @@ public class ListOfFiles {
 
         final var HUMAN_READABLE = argumentProcessor.hasOption(CLIOption.HUMAN_READABLE);
 
-        String format = "%" + (WITH_PERMISSIONS ? "10s " : "s") +
+        String format = ("%" + (WITH_PERMISSIONS ? "10s " : "s") + (fileInfo.isDirectory() ? " " : "")) +
                 ("%" +  (WITH_SIZE ? -length.getLongSizeLength() : "") + "s") +
                 (" %" + (WITH_OWNER ? (-length.getLongOwnerLength() + "s  ") : "s")) +
                 ("%" + (WITH_GROUP ? (-length.getLongGroupLength() + "s  ") : "s")) +
@@ -154,21 +155,21 @@ public class ListOfFiles {
             final ArgumentProcessor argumentProcessor,
             final boolean withSize
     ) {
-        final var IS_WITH_NO_COLORS = !argumentProcessor.hasOption(CLIOption.NO_COLORS);
-        final var IS_HUMAN_READABLE = argumentProcessor.hasOption(CLIOption.HUMAN_READABLE);
-        final var IS_NO_ICONS = argumentProcessor.hasOption(CLIOption.NO_ICONS);
+        final var WITH_COLORS = !argumentProcessor.hasOption(CLIOption.NO_COLORS);
+        final var HUMAN_READABLE = argumentProcessor.hasOption(CLIOption.HUMAN_READABLE);
+        final var WITH_ICONS = !argumentProcessor.hasOption(CLIOption.NO_ICONS);
+        final var WITH_TYPE = !argumentProcessor.hasOption(CLIOption.NO_TYPE);
 
-        String format =
-                (IS_NO_ICONS ? "%s" : "%-2s ") + "%s" +
+        String format = (WITH_ICONS ? "%-2s " : "%s") +
+                        "%s" +
                         (fileInfo.isSymlink() ? " -> %s" : "%s") +
                         (withSize ? "  %s" : "%s");
 
         return String.format(format,
-                IS_NO_ICONS ? "" : (IS_WITH_NO_COLORS ?
-                        fileInfo.getIcon().toString() : fileInfo.getIcon().getNoColoredIcon()),
-                fileInfo.getName(IS_WITH_NO_COLORS),
-                fileInfo.isSymlink() ? fileInfo.getSymlinkTarget(IS_WITH_NO_COLORS) : "",
-                withSize ? fileInfo.getSize(IS_HUMAN_READABLE, IS_WITH_NO_COLORS) : ""
+                WITH_ICONS ? fileInfo.getIcon(WITH_COLORS) : "",
+                fileInfo.getName(WITH_COLORS, WITH_TYPE),
+                fileInfo.isSymlink() ? fileInfo.getSymlinkTarget(WITH_COLORS) : "",
+                withSize ? fileInfo.getSize(HUMAN_READABLE, WITH_COLORS) : ""
         );
 
     }
