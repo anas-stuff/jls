@@ -8,7 +8,7 @@ fi
 
 
 INSTALL_PATH=/usr/share/java/jls
-VERSION=0.3.3
+VERSION=0.3.4
 
 mkdir -p "$INSTALL_PATH"
 
