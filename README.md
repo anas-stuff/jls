@@ -22,7 +22,9 @@
 
 ## Install
 
-- Linux
+### Linux
+- From aur: `yay -S jls`
+- Manual:
     - Make sure you installed `wget` and [nerd font](https://www.nerdfonts.com)
     - Run this command
        ```bash
@@ -31,7 +33,8 @@
 
 ## Uninstall
 
-- Linux
+### Linux
+- Manual:
     - Run this command
       ```bash
         curl -s https://raw.githubusercontent.com/Anas-Elgarhy/jls/master/scripts/uninstall.sh | sudo bash
