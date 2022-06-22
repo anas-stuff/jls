@@ -81,7 +81,7 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/archpackage/jls" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitToolBoxStore">
     <option name="projectConfigVersion" value="5" />
@@ -281,7 +281,7 @@
       <workItem from="1655835841913" duration="143000" />
       <workItem from="1655835996416" duration="93000" />
       <workItem from="1655836099807" duration="18508000" />
-      <workItem from="1655883955539" duration="2001000" />
+      <workItem from="1655883955539" duration="2388000" />
     </task>
     <task id="LOCAL-00001" summary="Improve options 😉">
       <created>1654755440050</created>
