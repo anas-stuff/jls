@@ -10,7 +10,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1e31c16d-8df4-46b0-ac26-36d3ca2987bd" name="Changes" comment="Add then options table 🥰f">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/archpackage/jls/PKGBUILD" beforeDir="false" afterPath="$PROJECT_DIR$/archpackage/jls/PKGBUILD" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,7 +81,7 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/archpackage/jls" />
   </component>
   <component name="GitToolBoxStore">
     <option name="projectConfigVersion" value="5" />
@@ -279,7 +280,8 @@
       <workItem from="1655803328904" duration="30047000" />
       <workItem from="1655835841913" duration="143000" />
       <workItem from="1655835996416" duration="93000" />
-      <workItem from="1655836099807" duration="15950000" />
+      <workItem from="1655836099807" duration="18508000" />
+      <workItem from="1655883955539" duration="2001000" />
     </task>
     <task id="LOCAL-00001" summary="Improve options 😉">
       <created>1654755440050</created>
