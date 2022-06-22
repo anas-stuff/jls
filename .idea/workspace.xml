@@ -9,7 +9,13 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1e31c16d-8df4-46b0-ac26-36d3ca2987bd" name="Changes" comment="Add then options table 🥰f" />
+    <list default="true" id="1e31c16d-8df4-46b0-ac26-36d3ca2987bd" name="Changes" comment="Add then options table 🥰f">
+      <change afterPath="$PROJECT_DIR$/.gitmodules" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/archpackage/jls" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/scripts/jls-0.3.3.tar.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/scripts/jls.jar" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -277,7 +283,7 @@
       <workItem from="1655803328904" duration="30047000" />
       <workItem from="1655835841913" duration="143000" />
       <workItem from="1655835996416" duration="93000" />
-      <workItem from="1655836099807" duration="14567000" />
+      <workItem from="1655836099807" duration="15299000" />
     </task>
     <task id="LOCAL-00001" summary="Improve options 😉">
       <created>1654755440050</created>
