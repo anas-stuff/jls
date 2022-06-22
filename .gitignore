@@ -40,3 +40,15 @@ gradle-app.setting
 # # Work around https://youtrack.jetbrains.com/issue/IDEA-116898
 # gradle/wrapper/gradle-wrapper.properties
 
+### ArchLinuxPackages template
+*.tar
+*.tar.*
+*.exe
+*.msi
+*.tgz
+*.log.*
+*.sig
+
+pkg/
+src/
+
