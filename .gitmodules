@@ -1,3 +1,0 @@
-[submodule "archpackage/jls"]
-	path = archpackage/jls
-	url = ssh://aur@aur.archlinux.org/dwl-git.git
