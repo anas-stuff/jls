@@ -79,7 +79,7 @@
 - [ ] Add Tests
 - [ ] Add Formatter
 - [ ] Add configs system
-- [ ] Crete arch package
+- [x] Crete arch package [created in aur](https://aur.archlinux.org/packages/jls)
 
 ### Available in
 
