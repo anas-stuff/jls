@@ -1,2 +1,2 @@
 #!/usr/bin/env sh
-exec '/usr/bin/java -jar /usr/share/java/jls/jls.jar' "$@"
+exec /usr/bin/java -jar /usr/share/java/jls/jls.jar "$@"

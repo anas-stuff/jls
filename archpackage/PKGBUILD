@@ -5,19 +5,19 @@
 
 # Maintainer: Anas Elgarhy <anas.elgarhy.dev@gmail.com>
 pkgname=jls
-pkgver=0.3.0
-pkgrel=1
-epoch=
+pkgver=0.3.4
+pkgrel=0
+epoch=0
 pkgdesc="A modern ls with java."
 arch=('any')
 url="https://github.com/Anas-Elgarhy/jls"
-license=('GPL')
+license=('GPL3')
 groups=('java-utils')
 depends=('jdk-openjdk' 'nerd-fonts-fira-code')
 makedepends=()
 checkdepends=()
 optdepends=()
-provides=()
+provides=(jls)
 conflicts=()
 replaces=(jls)
 backup=()
@@ -28,24 +28,9 @@ source=("https://github.com/Anas-Elgarhy/jls/releases/download/$pkgver/$pkgname-
 noextract=()
 md5sums=()
 validpgpkeys=()
-
-prepare() {
-	cd "$pkgname-$pkgver"
-	patch -p1 -i "$srcdir/$pkgname-$pkgver.patch"
-}
-
-build() {
-	cd "$pkgname-$pkgver"
-	./configure --prefix=/usr
-	make
-}
-
-check() {
-	cd "$pkgname-$pkgver"
-	make -k check
-}
+sha256sums=('7eecaaa33723c710598490f8cc9b81fe8a033456b52f8794614bb453a85ce564')
 
 package() {
-	cd "$pkgname-$pkgver"
-	make DESTDIR="$pkgdir/" install
+    sudo install -Dm644 ./jls.jar "/usr/share/java/jls/jls.jar"
+    sudo install -Dm777 ./jls.sh "/bin/jls"
 }
