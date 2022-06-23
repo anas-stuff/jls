@@ -112,7 +112,7 @@ public class ListOfFiles {
     ) {
         final var IS_WITH_NO_COLORS = !argumentProcessor.hasOption(CLIOption.NO_COLORS);
         final var WITH_OWNER = !argumentProcessor.hasOption(CLIOption.NO_OWNER);
-        final var WITH_GROUP = !argumentProcessor.hasOption(CLIOption.GROUP);
+        final var WITH_GROUP = argumentProcessor.hasOption(CLIOption.GROUP);
         final var WITH_DATE = !argumentProcessor.hasOption(CLIOption.NO_DATE);
         final var WITH_PERMISSIONS = !argumentProcessor.hasOption(CLIOption.NO_PERMISSIONS);
         final var WITH_SIZE = !argumentProcessor.hasOption(CLIOption.NO_SIZE);
