@@ -9,7 +9,10 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1e31c16d-8df4-46b0-ac26-36d3ca2987bd" name="Changes" comment="edit nerd-font ,url,sha256sums" />
+    <list default="true" id="1e31c16d-8df4-46b0-ac26-36d3ca2987bd" name="Changes" comment="add update_pkhgbuild">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/archpackage/jls/PKGBUILD" beforeDir="false" afterPath="$PROJECT_DIR$/archpackage/PKGBUILD" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -182,11 +185,11 @@
       <recent name="com.anas.javautils.jls" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/archpackage" />
+      <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/Screenshots" />
       <recent name="$PROJECT_DIR$/archpackage/jls" />
-      <recent name="$PROJECT_DIR$/archpackage" />
       <recent name="$PROJECT_DIR$/src/main/resources" />
-      <recent name="$PROJECT_DIR$/src/main/java" />
     </key>
   </component>
   <component name="RunAnythingCache">
@@ -290,6 +293,9 @@
       <workItem from="1669556563462" duration="1469000" />
       <workItem from="1669586282286" duration="1227000" />
       <workItem from="1669587816952" duration="208000" />
+      <workItem from="1669588031562" duration="108000" />
+      <workItem from="1669588243108" duration="368000" />
+      <workItem from="1669603507740" duration="379000" />
     </task>
     <task id="LOCAL-00001" summary="Improve options 😉">
       <created>1654755440050</created>
@@ -333,7 +339,14 @@
       <option name="project" value="LOCAL" />
       <updated>1669587914204</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="add update_pkhgbuild">
+      <created>1669588117149</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1669588117149</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -360,7 +373,8 @@
     <MESSAGE value="add action" />
     <MESSAGE value="edit action.yml" />
     <MESSAGE value="edit nerd-font ,url,sha256sums" />
-    <option name="LAST_COMMIT_MESSAGE" value="edit nerd-font ,url,sha256sums" />
+    <MESSAGE value="add update_pkhgbuild" />
+    <option name="LAST_COMMIT_MESSAGE" value="add update_pkhgbuild" />
   </component>
   <component name="VgoProject">
     <integration-enabled>false</integration-enabled>
