@@ -9,9 +9,7 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1e31c16d-8df4-46b0-ac26-36d3ca2987bd" name="Changes" comment="add update_pkhgbuild">
-      <change beforePath="$PROJECT_DIR$/.github/workflows/aur-release.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/aur-release.yml" afterDir="false" />
-    </list>
+    <list default="true" id="1e31c16d-8df4-46b0-ac26-36d3ca2987bd" name="Changes" comment="add update_pkhgbuild" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
