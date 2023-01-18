@@ -9,7 +9,9 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1e31c16d-8df4-46b0-ac26-36d3ca2987bd" name="Changes" comment="Add then options table 🥰f" />
+    <list default="true" id="1e31c16d-8df4-46b0-ac26-36d3ca2987bd" name="Changes" comment="Add then options table 🥰f">
+      <change afterPath="$PROJECT_DIR$/scripts/release.sh" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -280,7 +282,7 @@
       <workItem from="1655835996416" duration="93000" />
       <workItem from="1655836099807" duration="18508000" />
       <workItem from="1655883955539" duration="16549000" />
-      <workItem from="1655926667483" duration="2776000" />
+      <workItem from="1655926667483" duration="5544000" />
     </task>
     <task id="LOCAL-00001" summary="Improve options 😉">
       <created>1654755440050</created>
