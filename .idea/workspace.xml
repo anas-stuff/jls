@@ -9,8 +9,9 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1e31c16d-8df4-46b0-ac26-36d3ca2987bd" name="Changes" comment="Add then options table 🥰f">
-      <change afterPath="$PROJECT_DIR$/scripts/release.sh" afterDir="false" />
+    <list default="true" id="1e31c16d-8df4-46b0-ac26-36d3ca2987bd" name="Changes" comment="add update_pkhgbuild">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/archpackage/jls/PKGBUILD" beforeDir="false" afterPath="$PROJECT_DIR$/archpackage/PKGBUILD" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -158,7 +159,7 @@
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;com.intellij.openapi.externalSystem.service.settings.ExternalSystemGroupConfigurable&quot;: &quot;ALL&quot;,
     &quot;go.import.settings.migrated&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/mnt/Work_files/clones/TypingWithStyle&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/yosef/git-clone/jls&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -168,7 +169,7 @@
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.21034482&quot;,
     &quot;ruby.rails.projectView.checked&quot;: &quot;true&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
+    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.DirectoryMappings&quot;
   },
   &quot;keyToStringList&quot;: {
     &quot;com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File&quot;: [
@@ -184,9 +185,11 @@
       <recent name="com.anas.javautils.jls" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/main/resources" />
+      <recent name="$PROJECT_DIR$/archpackage" />
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/Screenshots" />
       <recent name="$PROJECT_DIR$/archpackage/jls" />
-      <recent name="$PROJECT_DIR$/src/main/java" />
+      <recent name="$PROJECT_DIR$/src/main/resources" />
     </key>
   </component>
   <component name="RunAnythingCache">
@@ -282,7 +285,17 @@
       <workItem from="1655835996416" duration="93000" />
       <workItem from="1655836099807" duration="18508000" />
       <workItem from="1655883955539" duration="16549000" />
-      <workItem from="1655926667483" duration="5544000" />
+      <workItem from="1655926667483" duration="2776000" />
+      <workItem from="1669555149902" duration="266000" />
+      <workItem from="1669555437044" duration="15000" />
+      <workItem from="1669555519604" duration="380000" />
+      <workItem from="1669555925436" duration="21000" />
+      <workItem from="1669556563462" duration="1469000" />
+      <workItem from="1669586282286" duration="1227000" />
+      <workItem from="1669587816952" duration="208000" />
+      <workItem from="1669588031562" duration="108000" />
+      <workItem from="1669588243108" duration="368000" />
+      <workItem from="1669603507740" duration="379000" />
     </task>
     <task id="LOCAL-00001" summary="Improve options 😉">
       <created>1654755440050</created>
@@ -298,7 +311,42 @@
       <option name="project" value="LOCAL" />
       <updated>1654755483875</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="update nerd-font ,url , sha256sums">
+      <created>1669555806254</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1669555806254</updated>
+    </task>
+    <task id="LOCAL-00004" summary="add action">
+      <created>1669557121187</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1669557121187</updated>
+    </task>
+    <task id="LOCAL-00005" summary="edit action.yml">
+      <created>1669587436242</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1669587436242</updated>
+    </task>
+    <task id="LOCAL-00006" summary="edit nerd-font ,url,sha256sums">
+      <created>1669587914204</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1669587914204</updated>
+    </task>
+    <task id="LOCAL-00007" summary="add update_pkhgbuild">
+      <created>1669588117149</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1669588117149</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -316,9 +364,17 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+    <ignored-roots>
+      <path value="$PROJECT_DIR$/archpackage/jls" />
+    </ignored-roots>
     <MESSAGE value="Improve options " />
     <MESSAGE value="Add then options table " />
-    <option name="LAST_COMMIT_MESSAGE" value="Add then options table " />
+    <MESSAGE value="update nerd-font ,url , sha256sums" />
+    <MESSAGE value="add action" />
+    <MESSAGE value="edit action.yml" />
+    <MESSAGE value="edit nerd-font ,url,sha256sums" />
+    <MESSAGE value="add update_pkhgbuild" />
+    <option name="LAST_COMMIT_MESSAGE" value="add update_pkhgbuild" />
   </component>
   <component name="VgoProject">
     <integration-enabled>false</integration-enabled>
@@ -327,7 +383,6 @@
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <default-breakpoints>
-        <breakpoint type="DlvErrorBreakpoint" />
         <breakpoint type="python-exception">
           <properties notifyOnTerminate="true" exception="BaseException">
             <option name="notifyOnTerminate" value="true" />
